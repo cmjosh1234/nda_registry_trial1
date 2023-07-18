@@ -23,15 +23,22 @@ INCOMING 2021 | <a href="letters_without_reference_2021.php">LETTERS WITHOUT REF
 <table cellspacing="0" cellpadding="2" id="resultTable">
 <thead>
 	<tr>
-		<th width="5%"> Date In</th>
-		<th width="7%"> Date Out</th>
-		<th width="10%"> Received By </th>
-		<th width="10%"> Document Type </th>
-		<th width="23%"> Description </th>
-		<th width="10%"> Office </th>
-		<th width="5%"> Status </th>
-		<th width="10%"> Forwarded To </th>
-		<th width="10%"> Action </th>
+		<th width="5%"> RECEIVED</th>
+		<th width="7%"> REF</th>
+		<th width="10%"> SENDER </th>
+		<th width="10%"> SUB </th>
+		<th width="23%"> TO(DEPT) </th>
+		<th width="10%"> RECEIVED BY </th>
+		<th width="5%"> OUTGOING LETTER </th>
+		<th width="10%"> REF NO </th>
+		<th width="10%"> SENDING (DEPT) </th>
+		<th width="10%"> RECEIVED AT REGISTRY </th>
+		<th width="10%"> RECEIVED BY </th>
+		<th width="10%"> TEL </th>
+		<th width="10%"> RECEIVED </th>
+		<th width="10%"> FILE NAME </th>
+		<th width="10%"> FILE NO </th>
+		<th width="10%"> BOX NO </th>
 	</tr>
 </thead>
 <tbody>
@@ -42,14 +49,22 @@ INCOMING 2021 | <a href="letters_without_reference_2021.php">LETTERS WITHOUT REF
 		for($i=0; $row = $result->fetch(); $i++){
 	?>
 	<tr class="record">
-		<td><?php echo $row['date']; ?></td>
-		<td><?php echo $row['dateout']; ?></td>
-		<td><?php echo $row['receive_by']; ?></td>
-		<td><?php echo $row['doc_type']; ?></td>
-		<td><?php echo $row['description']; ?></td>
-		<td><?php echo $row['office']; ?></td>
-		<td><?php echo $row['status']; ?></td>
-		<td><?php echo $row['ft']; ?></td>
+		<td><?php echo $row['receive1']; ?></td>
+		<td><?php echo $row['ref']; ?></td>
+		<td><?php echo $row['sender']; ?></td>
+		<td><?php echo $row['sub']; ?></td>
+		<td><?php echo $row['to_dept']; ?></td>
+		<td><?php echo $row['received_by']; ?></td>
+		<td><?php echo $row['out_letter']; ?></td>
+		<td><?php echo $row['refno']; ?></td>
+		<td><?php echo $row['sending_dept']; ?></td>
+		<td><?php echo $row['rareg']; ?></td>
+		<td><?php echo $row['received_by']; ?></td>
+		<td><?php echo $row['tel_no']; ?></td>
+		<td><?php echo $row['received2']; ?></td>
+		<td><?php echo $row['file_name']; ?></td>
+		<td><?php echo $row['file_no']; ?></td>
+		<td><?php echo $row['box_no']; ?></td>
 		<td><a rel="facebox" href="editform.php?id=<?php echo $row['id']; ?>"> Edit </a> | <a href="#" id="<?php echo $row['id']; ?>" class="delbutton" title="Click To Delete">Delete</a></td>
 	</tr>
 	<?php
