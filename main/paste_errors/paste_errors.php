@@ -13,60 +13,30 @@
     })
   </script>
 <div id="log">
-INCOMING 2021 | <a href="letters_without_reference_2021.php">LETTERS WITHOUT REFERENCE 2021</a> | <a href="paste_errors.php">PASTE ERRORS</a> |
+<a href="index.php"> INCOMING 2021 </a> | <a href="letters_without_reference_2021.php">LETTERS WITHOUT REFERENCE 2021</a> | PASTE ERRORS
 </div>
 <div id="formdesign">
 <input type="text" name="filter" value="" id="filter" placeholder="Search Record..." autocomplete="off" />
-<a rel="facebox" href="add.php" id="add">ADD RECORD</a>
+<a rel="facebox" href="add_pe.php" id="add">ADD RECORD</a>
 </div>
 <div class="scrollingTable">
 <table cellspacing="0" cellpadding="2" id="resultTable">
 <thead>
 	<tr>
-		<th width="5px"> RECEIVED</th>
-		<th width="7px"> REF</th>
-		<th width="10px"> SENDER </th>
-		<th width="10px"> SUB </th>
-		<th width="23px"> TO(DEPT) </th>
-		<th width="10%"> RECEIVED BY </th>
-		<th width="5%"> OUTGOING LETTER </th>
-		<th width="10%"> REF NO </th>
-		<th width="10%"> SENDING (DEPT) </th>
-		<th width="10%"> RECEIVED AT REGISTRY </th>
-		<th width="10%"> RECEIVED BY </th>
-		<th width="10%"> TEL </th>
-		<th width="10%"> RECEIVED </th>
-		<th width="10%"> FILE NAME </th>
-		<th width="10%"> FILE NO </th>
-		<th width="10%"> BOX NO </th>
+		<th width="5px"> Field0</th>
 	</tr>
 </thead>
 <tbody>
 	<?php
 		include('connect.php');		
-		$result = $db->prepare("SELECT * FROM incoming2021 ORDER BY id DESC LIMIT 20");
+		$result = $db->prepare("SELECT * FROM paste_errors ORDER BY id DESC LIMIT 20");
 		$result->execute();
 		for($i=0; $row = $result->fetch(); $i++){
 	?>
-	<tr class="incoming2021"><!-- changed record to incoming2021 -->
-		<td><?php echo $row['DATE_RECEIEVED']; ?></td>
-		<td><?php echo $row['REF']; ?></td>
-		<td><?php echo $row['SENDER']; ?></td>
-		<td><?php echo $row['SUBJECT']; ?></td>
-		<td><?php echo $row['TODEPT']; ?></td>
-		<td><?php echo $row['RECEIVED_BY']; ?></td>
-		<td><?php echo $row['DATE_OF_OUTGOING_LETTER']; ?></td>
-		<td><?php echo $row['REF_NO']; ?></td>
-		<td><?php echo $row['SENDING_DEPT']; ?></td>
-		<td><?php echo $row['DATE_RECIEVED_AT_REGISTRY']; ?></td>
-		<td><?php echo $row['RECIEVED_BY']; ?></td>
-		<td><?php echo $row['TEL']; ?></td>
-		<td><?php echo $row['DATE_RECIEVED']; ?></td>
-		<td><?php echo $row['FILE_NAME']; ?></td>
-		<td><?php echo $row['FILE_NO']; ?></td>
-		<td><?php echo $row['BOX_NO']; ?></td>
+	<tr class="paste_errors"><!-- changed record to incoming2021 -->
+		<td><?php echo $row['Field0']; ?></td>
 		<!--<td><a rel="facebox" href="editform.php?id=<?php //echo $row['id']; ?>"> Edit </a> | <a href="#" id="<?php //echo $row['id']; ?>" class="delbutton" title="Click To Delete">Delete</a></td> -->
-		<td><a rel="facebox" href="editform.php?id=<?php echo $row['id']; ?>"> Edit </a> | <a href="#" id="<?php echo $row['id']; ?>" class="delbutton" title="Click To Delete">Delete</a></td>
+		<td><a rel="facebox" href="editform.php" id="<?php echo $row['id']; ?>"> Edit </a> | <a href="delete_pe.php" id="<?php echo $row['id']; ?>" class="delbutton" title="Click To Delete">Delete</a></td>
 	</tr>
 	<?php
 		}
