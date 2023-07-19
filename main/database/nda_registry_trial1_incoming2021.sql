@@ -42,7 +42,7 @@ CREATE TABLE `incoming2021` (
   `FILE_NAME` varchar(255) DEFAULT NULL,
   `FILE_NO` varchar(255) DEFAULT NULL,
   `BOX_NO` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb3_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -74,8 +74,12 @@ CREATE TABLE IF NOT EXISTS `user` (
 INSERT INTO `user` (`id`, `username`, `password`) VALUES
 (1, 'admin', 'admin');
 
-ALTER TABLE `user`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+ALTER TABLE incoming2021
+ADD id INT
+AUTO_INCREMENT NOT NULL PRIMARY KEY;
+
+/*   ALTER TABLE `user`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;*/
 
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
