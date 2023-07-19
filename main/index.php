@@ -1,6 +1,5 @@
 <script src="argiepolicarpio.js" type="text/javascript" charset="utf-8"></script>
 <script src="js/application.js" type="text/javascript" charset="utf-8"></script>
-<!--sa poip up-->
 <link href="style.css" rel="stylesheet" type="text/css" />
 <link href="src/facebox.css" media="screen" rel="stylesheet" type="text/css" />
    <script src="lib/jquery.js" type="text/javascript"></script>
@@ -14,20 +13,21 @@
     })
   </script>
 <div id="log">
-INCOMING 2021 | <a href="letters_without_reference_2021.php">LETTERS WITHOUT REFERENCE 2021</a> | <a href="paste_errors.php">PASTE ERRORS</a> | <a href="../index.php">Logout</a>
+INCOMING 2021 | <a href="letters_without_reference_2021.php">LETTERS WITHOUT REFERENCE 2021</a> | <a href="paste_errors.php">PASTE ERRORS</a> |
 </div>
 <div id="formdesign">
 <input type="text" name="filter" value="" id="filter" placeholder="Search Record..." autocomplete="off" />
 <a rel="facebox" href="add.php" id="add">ADD RECORD</a>
 </div>
+<div class="scrollingTable">
 <table cellspacing="0" cellpadding="2" id="resultTable">
 <thead>
 	<tr>
-		<th width="5%"> RECEIVED</th>
-		<th width="7%"> REF</th>
-		<th width="10%"> SENDER </th>
-		<th width="10%"> SUB </th>
-		<th width="23%"> TO(DEPT) </th>
+		<th width="5px"> RECEIVED</th>
+		<th width="7px"> REF</th>
+		<th width="10px"> SENDER </th>
+		<th width="10px"> SUB </th>
+		<th width="23px"> TO(DEPT) </th>
 		<th width="10%"> RECEIVED BY </th>
 		<th width="5%"> OUTGOING LETTER </th>
 		<th width="10%"> REF NO </th>
@@ -44,7 +44,7 @@ INCOMING 2021 | <a href="letters_without_reference_2021.php">LETTERS WITHOUT REF
 <tbody>
 	<?php
 		include('connect.php');		
-		$result = $db->prepare("SELECT * FROM incoming2021 "); //removed ORDER BY id DESC
+		$result = $db->prepare("SELECT * FROM incoming2021 ORDER BY id DESC LIMIT 20");
 		$result->execute();
 		for($i=0; $row = $result->fetch(); $i++){
 	?>
@@ -59,7 +59,7 @@ INCOMING 2021 | <a href="letters_without_reference_2021.php">LETTERS WITHOUT REF
 		<td><?php echo $row['REF_NO']; ?></td>
 		<td><?php echo $row['SENDING_DEPT']; ?></td>
 		<td><?php echo $row['DATE_RECIEVED_AT_REGISTRY']; ?></td>
-		<td><?php echo $row['RECEIVED_BY']; ?></td>
+		<td><?php echo $row['RECIEVED_BY']; ?></td>
 		<td><?php echo $row['TEL']; ?></td>
 		<td><?php echo $row['DATE_RECIEVED']; ?></td>
 		<td><?php echo $row['FILE_NAME']; ?></td>
@@ -72,6 +72,10 @@ INCOMING 2021 | <a href="letters_without_reference_2021.php">LETTERS WITHOUT REF
 	?>
 </tbody>
 </table>
+</div>
+<?php 
+	include_once('footer.php')
+?>
 <script src="js/jquery.js"></script>
   <script type="text/javascript">
 $(function() {

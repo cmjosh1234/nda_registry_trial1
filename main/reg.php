@@ -1,7 +1,7 @@
 <?php
 include('connect.php');	
 
-$DATE_RECEIEVED = $_POST['DATE_RECEIEVED"'];
+$DATE_RECEIEVED = $_POST['DATE_RECEIEVED'];
 $REF = $_POST['REF'];
 $SENDER = $_POST['SENDER'];
 $SUBJECT = $_POST['SUBJECT'];
