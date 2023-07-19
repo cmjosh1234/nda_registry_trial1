@@ -6,8 +6,8 @@ REF<br>
 <input type="text" name="REF" /><br><br>
 SENDER<br>
 <input type="text" name="SENDER" /><br><br>
-SUBJEC<br>
-<input type="text" name="SUBJEC" /><br><br>
+$SUBJECT<br>
+<input type="text" name="SUBJECT" /><br><br>
 TO (DEPT)<br>
 <input type="text" name="TODEPT" /><br><br>
 RECEIVED_BY<br>
