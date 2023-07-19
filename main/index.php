@@ -17,7 +17,7 @@
 INCOMING 2021 | <a href="letters_without_reference_2021.php">LETTERS WITHOUT REFERENCE 2021</a> | <a href="paste_errors.php">PASTE ERRORS</a> | <a href="../index.php">Logout</a>
 </div>
 <div id="formdesign">
-<input type="text" name="filter" value="" id="filter" placeholder="Search Transaction..." autocomplete="off" />
+<input type="text" name="filter" value="" id="filter" placeholder="Search Record..." autocomplete="off" />
 <a rel="facebox" href="add.php" id="add">ADD RECORD</a>
 </div>
 <table cellspacing="0" cellpadding="2" id="resultTable">
@@ -44,27 +44,27 @@ INCOMING 2021 | <a href="letters_without_reference_2021.php">LETTERS WITHOUT REF
 <tbody>
 	<?php
 		include('connect.php');		
-		$result = $db->prepare("SELECT * FROM transaction ORDER BY id DESC");
+		$result = $db->prepare("SELECT * FROM incoming2021 "); //removed ORDER BY id DESC
 		$result->execute();
 		for($i=0; $row = $result->fetch(); $i++){
 	?>
-	<tr class="record">
-		<td><?php echo $row['receive1']; ?></td>
-		<td><?php echo $row['ref']; ?></td>
-		<td><?php echo $row['sender']; ?></td>
-		<td><?php echo $row['sub']; ?></td>
-		<td><?php echo $row['to_dept']; ?></td>
-		<td><?php echo $row['received_by']; ?></td>
-		<td><?php echo $row['out_letter']; ?></td>
-		<td><?php echo $row['refno']; ?></td>
-		<td><?php echo $row['sending_dept']; ?></td>
-		<td><?php echo $row['rareg']; ?></td>
-		<td><?php echo $row['received_by']; ?></td>
-		<td><?php echo $row['tel_no']; ?></td>
-		<td><?php echo $row['received2']; ?></td>
-		<td><?php echo $row['file_name']; ?></td>
-		<td><?php echo $row['file_no']; ?></td>
-		<td><?php echo $row['box_no']; ?></td>
+	<tr class="incoming2021"><!-- changed record to incoming2021 -->
+		<td><?php echo $row['DATE_RECEIEVED']; ?></td>
+		<td><?php echo $row['REF']; ?></td>
+		<td><?php echo $row['SENDER']; ?></td>
+		<td><?php echo $row['SUBJECT']; ?></td>
+		<td><?php echo $row['TODEPT']; ?></td>
+		<td><?php echo $row['RECEIVED_BY']; ?></td>
+		<td><?php echo $row['DATE_OF_OUTGOING_LETTER']; ?></td>
+		<td><?php echo $row['REF_NO']; ?></td>
+		<td><?php echo $row['SENDING_DEPT']; ?></td>
+		<td><?php echo $row['DATE_RECIEVED_AT_REGISTRY']; ?></td>
+		<td><?php echo $row['RECEIVED_BY']; ?></td>
+		<td><?php echo $row['TEL']; ?></td>
+		<td><?php echo $row['DATE_RECIEVED']; ?></td>
+		<td><?php echo $row['FILE_NAME']; ?></td>
+		<td><?php echo $row['FILE_NO']; ?></td>
+		<td><?php echo $row['BOX_NO']; ?></td>
 		<td><a rel="facebox" href="editform.php?id=<?php echo $row['id']; ?>"> Edit </a> | <a href="#" id="<?php echo $row['id']; ?>" class="delbutton" title="Click To Delete">Delete</a></td>
 	</tr>
 	<?php
@@ -98,7 +98,7 @@ var info = 'id=' + del_id;
    
    }
  });
-         $(this).parents(".record").animate({ backgroundColor: "#fbc7c7" }, "fast")
+         $(this).parents(".nda_registry_trial1").animate({ backgroundColor: "#fbc7c7" }, "fast")//removed record, addes nda_registry_trial1
 		.animate({ opacity: "hide" }, "slow");
 
  }

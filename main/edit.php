@@ -3,30 +3,30 @@
 include('connect.php');
 
 // new data
-$received1 = $_POST['received1'];
-$ref = $_POST['ref'];
-$sender = $_POST['sender'];
-$sub = $_POST['sub'];
-$to_dept = $_POST['to_dept'];
-$received_by = $_POST['received_by'];
-$out_letter = $_POST['out_letter'];
-$refno = $_POST['refno'];
-$sending_dept = $_POST['sending_dept'];
-$rareg = $_POST['rareg'];
-$received_by = $_POST['received_by'];
-$tel_no = $_POST['tel_no'];
-$received2 = $_POST['received2'];
-$file_name = $_POST['file_name'];
-$file_no = $_POST['file_no'];
-$box_no = $_POST['box_no'];
+$DATE_RECEIEVED = $_POST['DATE_RECEIEVED'];
+$REF = $_POST['REF'];
+$SENDER = $_POST['SENDER'];
+$SUBJECT = $_POST['SUBJECT'];
+$TODEPT = $_POST['TODEPT'];
+$RECEIVED_BY = $_POST['RECEIVED_BY'];
+$DATE_OF_OUTGOING_LETTER = $_POST['DATE_OF_OUTGOING_LETTER'];
+$REF_NO = $_POST['REF_NO'];
+$SENDING_DEPT = $_POST['SENDING_DEPT'];
+$DATE_RECEIEVED_AT_REGISTRY = $_POST['DATE_RECEIEVED_AT_REGISTRY'];
+$RECIEVED_BY = $_POST['RECIEVED_BY'];
+$TEL = $_POST['TEL'];
+$DATE_RECIEVED = $_POST['DATE_RECIEVED'];
+$FILE_NAME = $_POST['FILE_NAME'];
+$FILE_NO = $_POST['FILE_NO'];
+$BOX_NO = $_POST['BOX_NO'];
 
 
 // query
-$sql = "UPDATE transaction 
-        SET received1=?, ref=?, sender=?, sub=?, to_dept=?, received_by=?, out_letter=?, refno=?, sending_dept=?, rareg=?, received_by=?, tel_no=?, received2=?, file_name=?, file_no=?, box_no=?
+$sql = "UPDATE incoming2021 
+        SET DATE_RECEIEVED=?, REF=?, SENDER=?, SUBJECT=?, TODEPT=?, RECEIVED_BY=?, DATE_OF_OUTGOING_LETTER=?, REF_NO=?, SENDING_DEPT=?, DATE_RECEIEVED_AT_REGISTRY=?, RECIEVED_BY=?, TEL=?, DATE_RECIEVED=?, FILE_NAME=?, FILE_NO=?, BOX_NO=?
 		WHERE id=?";
 $q = $db->prepare($sql);
-$q->execute(array($received1,$ref,$sender,$sub,$to_dept,$received_by,$out_letter,$refno,$sending_dept,$rareg,$received_by,$tel_no,$received2,$file_name,$file_no,$box_no));
+$q->execute(array($DATE_RECEIEVED,$REF,$SENDER,$SUBJECT,$TODEPT,$RECEIVED_BY,$DATE_OF_OUTGOING_LETTER,$REF_NO,$SENDING_DEPT,$DATE_RECEIEVED_AT_REGISTRY,$RECIEVED_BY,$TEL,$DATE_RECIEVED,$FILE_NAME,$FILE_NO,$BOX_NO));
 header("location: index.php");
 
 ?>
