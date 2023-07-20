@@ -1,5 +1,5 @@
 <?php
-	include('connect.php');
+	include('../connect.php');
 	$id=$_GET['id'];
 	$result = $db->prepare("SELECT * FROM incoming2021 WHERE id= :userid");
 	$result->bindParam(':userid', $id);
@@ -23,9 +23,9 @@ RECIPIENT<br>
 DATE_DELIVERED<br>
 <input type="text" name="DATE_DELIVERED" value="<?php echo $rows['DATE_DELIVERED']; ?>" /><br><br>
 FILE NAME<br>
-<input type="text" name="FILE NAME" value="<?php echo $rows['FILE NAME']; ?>" /><br><br>
+<input type="text" name="FILE_NAME" value="<?php echo $rows['FILE_NAME']; ?>" /><br><br>
 FILE NO<br>
-<input type="text" name="FILE NO" value="<?php echo $rows['FILE NO']; ?>" /><br><br>
+<input type="text" name="FILE_NO" value="<?php echo $rows['FILE_NO']; ?>" /><br><br>
 RECEIVED AT REGISTRY<br>
 <input type="text" name="DATE_RECIEVED_AT_REGISTRY" value="<?php echo $rows['DATE_RECIEVED_AT_REGISTRY']; ?>" /><br><br>
 BOX_NO<br>
