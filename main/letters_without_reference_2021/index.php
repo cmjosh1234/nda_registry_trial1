@@ -17,7 +17,7 @@
 </div>
 <div id="formdesign">
 <input type="text" name="filter" value="" id="filter" placeholder="Search Record..." autocomplete="off" />
-<a rel="facebox" href="add.php" id="add">ADD RECORD</a>
+<a rel="facebox" href="add_le.php" id="add">ADD RECORD</a>
 </div>
 <div class="scrollingTable">
 <table cellspacing="0" cellpadding="2" id="resultTable">
@@ -43,16 +43,16 @@
 		for($i=0; $row = $result->fetch(); $i++){
 	?>
 	<tr class="letters_without_reference"><!-- changed record to incoming2021 -->
-		<td><?php echo $row['LETTER REF']; ?></td>
-		<td><?php echo $row['ADDRESSED TO']; ?></td>
+		<td><?php echo $row['LETTER_REF']; ?></td>
+		<td><?php echo $row['ADDRESSED_TO']; ?></td>
 		<td><?php echo $row['SUBJECT']; ?></td>
-		<td><?php echo $row['DATE OF LETTER']; ?></td>
-		<td><?php echo $row['DATE RECIEVED AT REGISTRY']; ?></td>
+		<td><?php echo $row['DATE_OF_LETTER']; ?></td>
+		<td><?php echo $row['DATE_RECIEVED_AT_REGISTRY']; ?></td>
 		<td><?php echo $row['RECIPIENT']; ?></td>
-		<td><?php echo $row['DATE DELIVERED']; ?></td>
-		<td><?php echo $row['FILE NAME']; ?></td>
-		<td><?php echo $row['FILE NO']; ?></td>
-		<td><?php echo $row['BOX NO']; ?></td>
+		<td><?php echo $row['DATE_DELIVERED']; ?></td>
+		<td><?php echo $row['FILE_NAME']; ?></td>
+		<td><?php echo $row['FILE_NO']; ?></td>
+		<td><?php echo $row['BOX_NO']; ?></td>
 		<td><a rel="facebox" href="editform.php?id=<?php echo $row['id']; ?>"> Edit </a> | <a href="#" id="<?php echo $row['id']; ?>" class="delbutton" title="Click To Delete">Delete</a></td>
 	</tr>
 	<?php
