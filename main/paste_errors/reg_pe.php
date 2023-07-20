@@ -1,5 +1,5 @@
 <?php
-include('connect.php');	
+include('../connect.php');	
 
 $Field0 = $_POST['Field0'];
 
