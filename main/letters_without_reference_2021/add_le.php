@@ -9,7 +9,7 @@ SUBJECT<br>
 DATE OF LETTER<br>
 <input type="date" name="DATE_OF_LETTER" /><br><br>
 DATE RECIEVED AT REGISTRY<br>
-<input type="text" name="DATE_RECIEVED_AT_REGISTRY" /><br><br>
+<input type="date" name="DATE_RECIEVED_AT_REGISTRY" /><br><br>
 RECIPIENT<br>
 <input type="text" name="RECIPIENT" /><br><br>
 DATE DELIVERED<br>
