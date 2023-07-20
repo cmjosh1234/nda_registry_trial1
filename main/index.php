@@ -12,7 +12,8 @@
       })
     })
   </script>
-<div id="log">
+<div id="log"> 
+	<?php include 'letters_without_reference_2021/index.php'; ?>
 INCOMING 2021 | <a href="letters_without_reference_2021.php">LETTERS WITHOUT REFERENCE 2021</a> | <a href="paste_errors.php">PASTE ERRORS</a> |
 </div>
 <div id="formdesign">
@@ -65,7 +66,6 @@ INCOMING 2021 | <a href="letters_without_reference_2021.php">LETTERS WITHOUT REF
 		<td><?php echo $row['FILE_NAME']; ?></td>
 		<td><?php echo $row['FILE_NO']; ?></td>
 		<td><?php echo $row['BOX_NO']; ?></td>
-		<!--<td><a rel="facebox" href="editform.php?id=<?php //echo $row['id']; ?>"> Edit </a> | <a href="#" id="<?php //echo $row['id']; ?>" class="delbutton" title="Click To Delete">Delete</a></td> -->
 		<td><a rel="facebox" href="editform.php?id=<?php echo $row['id']; ?>"> Edit </a> | <a href="#" id="<?php echo $row['id']; ?>" class="delbutton" title="Click To Delete">Delete</a></td>
 	</tr>
 	<?php
