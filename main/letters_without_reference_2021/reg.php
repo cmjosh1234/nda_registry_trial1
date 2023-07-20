@@ -1,5 +1,5 @@
 <?php
-include('connect.php');	
+include('../connect.php');	
 
 $LETTER_REF = $_POST['LETTER_REF'];
 $ADDRESSED_TO = $_POST['ADDRESSED_TO'];
