@@ -72,7 +72,7 @@ var info = 'id=' + del_id;
    
    }
  });
-         $(this).parents(".nda_registry_trial1").animate({ backgroundColor: "#fbc7c7" }, "fast")//removed record, addes nda_registry_trial1
+         $(this).parents(".nda_registry_trial1").animate({ backgroundColor: "#fbc7c7" }, "fast")//removed record, added nda_registry_trial1
 		.animate({ opacity: "hide" }, "slow");
 
  }
