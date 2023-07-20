@@ -14,7 +14,7 @@
     })
   </script>
 <div id="log">
-<a href="letters_without_reference_2021.php"> INCOMING 2021 </a> | LETTERS WITHOUT REFERENCE 2021 | <a href="../paste_errors/index.php">PASTE ERRORS</a> | <a href="../index.php">Logout</a>
+<a href="letters_without_reference.php"> INCOMING 2021 </a> | LETTERS WITHOUT REFERENCE 2021 | <a href="../paste_errors/index.php">PASTE ERRORS</a> | <a href="../index.php">Logout</a>
 </div>
 <div id="formdesign">
 <input type="text" name="filter" value="" id="filter" placeholder="Search Record..." autocomplete="off" />
@@ -36,9 +36,9 @@
 	</tr>
 </thead>
 <tbody>
-	<?php
-		include('connect.php');		
-		$result = $db->prepare("SELECT * FROM letters_without_reference "); //removed ORDER BY id DESC
+<?php
+		include('../connect.php');		
+		$result = $db->prepare("SELECT * FROM paste_errors ORDER BY id DESC LIMIT 20");//
 		$result->execute();
 		for($i=0; $row = $result->fetch(); $i++){
 	?>
