@@ -35,7 +35,7 @@
 	?>
 	<tr class="paste_errors"><!-- changed record to incoming2021 -->
 		<td><?php echo $row['Field0']; ?></td>
-		<td><a rel="facebox" href="editform.php?id=<?php echo $row['id']; ?>"> Edit </a> | <a href="#" id="<?php echo $row['id']; ?>" class="delbutton" title="Click To Delete">Delete</a></td>
+		<td><a rel="facebox" href="editform.php?id=<?php echo $row['id']; ?>"> Edit </a> | <a href="delete_pe.php?id=<?php echo $row['id']; ?>" class="delbutton" title="Click To Delete">Delete</a></td>
 	</tr>
 	<?php
 		}
@@ -66,7 +66,7 @@ var info = 'id=' + del_id;
 
  $.ajax({
    type: "GET",
-   url: "delete.php",
+   url: "delete_pe.php",
    data: info,
    success: function(){
    
