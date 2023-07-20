@@ -1,25 +1,25 @@
 <script src="argiepolicarpio.js" type="text/javascript" charset="utf-8"></script>
 <script src="js/application.js" type="text/javascript" charset="utf-8"></script>
-<!--sa poip up-->
 <link href="style.css" rel="stylesheet" type="text/css" />
-<link href="src/facebox.css" media="screen" rel="stylesheet" type="text/css" />
-   <script src="lib/jquery.js" type="text/javascript"></script>
-  <script src="src/facebox.js" type="text/javascript"></script>
+<link href="../src/facebox.css" media="screen" rel="stylesheet" type="text/css" />
+   <script src="../lib/jquery.js" type="text/javascript"></script>
+  <script src="../src/facebox.js" type="text/javascript"></script>
   <script type="text/javascript">
     jQuery(document).ready(function($) {
       $('a[rel*=facebox]').facebox({
-        loadingImage : 'src/loading.gif',
-        closeImage   : 'src/closelabel.png'
+        loadingImage : '../src/loading.gif',
+        closeImage   : '../src/closelabel.png'
       })
     })
   </script>
 <div id="log">
-<a href="letters_without_reference.php"> INCOMING 2021 </a> | LETTERS WITHOUT REFERENCE 2021 | <a href="../paste_errors/index.php">PASTE ERRORS</a> | <a href="../index.php">Logout</a>
+<a href="../index.php"> INCOMING 2021 </a> | LETTERS WITHOUT REFERENCE 2021 | <a href="../paste_errors/index.php">PASTE ERRORS</a>
 </div>
 <div id="formdesign">
 <input type="text" name="filter" value="" id="filter" placeholder="Search Record..." autocomplete="off" />
 <a rel="facebox" href="add.php" id="add">ADD RECORD</a>
 </div>
+<div class="scrollingTable">
 <table cellspacing="0" cellpadding="2" id="resultTable">
 <thead>
 	<tr>
@@ -36,23 +36,23 @@
 	</tr>
 </thead>
 <tbody>
-<?php
+	<?php
 		include('../connect.php');		
-		$result = $db->prepare("SELECT * FROM paste_errors ORDER BY id DESC LIMIT 20");//
+		$result = $db->prepare("SELECT * FROM letters_without_reference_2021 ORDER BY id DESC LIMIT 15"); 
 		$result->execute();
 		for($i=0; $row = $result->fetch(); $i++){
 	?>
 	<tr class="letters_without_reference"><!-- changed record to incoming2021 -->
-		<td><?php echo $row['LETTER_REF']; ?></td>
+		<td><?php echo $row['LETTER REF']; ?></td>
 		<td><?php echo $row['ADDRESSED TO']; ?></td>
 		<td><?php echo $row['SUBJECT']; ?></td>
 		<td><?php echo $row['DATE OF LETTER']; ?></td>
 		<td><?php echo $row['DATE RECIEVED AT REGISTRY']; ?></td>
 		<td><?php echo $row['RECIPIENT']; ?></td>
-		<td><?php echo $row['DATE_DELIVERED']; ?></td>
-		<td><?php echo $row['FILE_NAME']; ?></td>
-		<td><?php echo $row['FILE_NO']; ?></td>
-		<td><?php echo $row['BOX_NO']; ?></td>
+		<td><?php echo $row['DATE DELIVERED']; ?></td>
+		<td><?php echo $row['FILE NAME']; ?></td>
+		<td><?php echo $row['FILE NO']; ?></td>
+		<td><?php echo $row['BOX NO']; ?></td>
 		<td><a rel="facebox" href="editform.php?id=<?php echo $row['id']; ?>"> Edit </a> | <a href="#" id="<?php echo $row['id']; ?>" class="delbutton" title="Click To Delete">Delete</a></td>
 	</tr>
 	<?php
@@ -60,6 +60,13 @@
 	?>
 </tbody>
 </table>
+</div>
+
+<?php 
+	include_once('../includes/footer.php')
+?>
+
+
 <script src="js/jquery.js"></script>
   <script type="text/javascript">
 $(function() {
