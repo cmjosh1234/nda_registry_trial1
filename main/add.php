@@ -6,7 +6,7 @@ REF<br>
 <input type="text" name="REF" /><br><br>
 SENDER<br>
 <input type="text" name="SENDER" /><br><br>
-SUBJECT<br>
+$SUBJECT<br>
 <input type="text" name="SUBJECT" /><br><br>
 TO (DEPT)<br>
 <input type="text" name="TODEPT" /><br><br>
@@ -21,7 +21,7 @@ SENDING DEPT<br>
 RECEIVED AT REGISTRY<br>
 <input type="text" name="DATE_RECIEVED_AT_REGISTRY" /><br><br>
 RECEIVED BY<br>
-<input type="text" name="RECEIVED_BY" /><br><br>
+<input type="text" name="RECIEVED_BY" /><br><br>
 TEL<br>
 <input type="text" name="TEL" /><br><br>
 RECEIVED<br>
