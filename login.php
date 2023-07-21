@@ -1,5 +1,5 @@
 <?php
-session_start();
+//session_start();
 $errmsg_arr = array();
 $errflag = false;
 // configuration
@@ -11,9 +11,10 @@ $dbpass		= "";
 // database connection
 $conn = new PDO("mysql:host=$dbhost;dbname=$dbname",$dbuser,$dbpass);
 
+
 // new data
 $user = $_POST['uname'];
-$password = $_POST['pword'];
+$password = $_POST['pword']; 
 
 if($user == '') {
 	$errmsg_arr[] = 'You must enter your Username';
@@ -25,9 +26,9 @@ if($password == '') {
 }
 
 // query
-$result = $conn->prepare("SELECT * FROM user WHERE username= :hjhjhjh AND password= :asas");
-$result->bindParam(':hjhjhjh', $user);
-$result->bindParam(':asas', $password);
+$result = $conn->prepare("SELECT * FROM user WHERE username= :ent1 AND password= :ent2");
+$result->bindParam(':ent1', $user);
+$result->bindParam(':ent2', $password);
 $result->execute();
 $rows = $result->fetch(PDO::FETCH_NUM);
 if($rows > 0) {
@@ -39,7 +40,7 @@ else{
 }
 if($errflag) {
 	$_SESSION['ERRMSG_ARR'] = $errmsg_arr;
-	session_write_close();
+	session_destroy();
 	header("location: index.php");
 	exit();
 }
