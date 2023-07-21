@@ -1,5 +1,4 @@
 <?php
-
 // configuration
 include('../connect.php');
 

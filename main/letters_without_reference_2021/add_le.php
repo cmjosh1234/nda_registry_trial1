@@ -6,10 +6,17 @@ ADDRESSED_TO<br>
 <input type="text" name="ADDRESSED TO" /><br><br>
 SUBJECT<br>
 <input type="text" name="SUBJECT" /><br><br>
+<<<<<<< HEAD
 DATE_OF_LETTER<br>
 <input type="text" name="DATE OF LETTER" /><br><br>
 DATE_RECIEVED_AT_REGISTRY<br>
 <input type="text" name="DATE RECIEVED AT REGISTRY" /><br><br>
+=======
+DATE OF LETTER<br>
+<input type="date" name="DATE_OF_LETTER" /><br><br>
+DATE RECIEVED AT REGISTRY<br>
+<input type="date" name="DATE_RECIEVED_AT_REGISTRY" /><br><br>
+>>>>>>> e7ec96c5150bed11b2d515139171dc58165fc89e
 RECIPIENT<br>
 <input type="text" name="RECIPIENT" /><br><br>
 DATE_DELIVERED<br>

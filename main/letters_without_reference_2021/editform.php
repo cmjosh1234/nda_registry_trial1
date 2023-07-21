@@ -1,7 +1,7 @@
 <?php
 	include('../connect.php');
 	$id=$_GET['id'];
-	$result = $db->prepare("SELECT * FROM incoming2021 WHERE id= :userid");
+	$result = $db->prepare("SELECT * FROM letters_without_reference_2021 WHERE id= :userid");
 	$result->bindParam(':userid', $id);
 	$result->execute();
 	for($i=0; $rows = $result->fetch(); $i++){
@@ -25,9 +25,13 @@ DATE_DELIVERED<br>
 FILE NAME<br>
 <input type="text" name="FILE_NAME" value="<?php echo $rows['FILE_NAME']; ?>" /><br><br>
 FILE NO<br>
+<<<<<<< HEAD
 <input type="text" name="FILE NO" value="<?php echo $rows['FILE NO']; ?>" /><br><br>
 RECEIVED AT REGISTRY<br>
 <input type="text" name="DATE_RECIEVED_AT_REGISTRY" value="<?php echo $rows['DATE_RECIEVED_AT_REGISTRY']; ?>" /><br><br>
+=======
+<input type="text" name="FILE_NO" value="<?php echo $rows['FILE_NO']; ?>" /><br><br>
+>>>>>>> e7ec96c5150bed11b2d515139171dc58165fc89e
 BOX_NO<br>
 <input type="text" name="BOX NO" value="<?php echo $rows['BOX_NO']; ?>" /><br><br>
 <input type="submit" value="Save" />
