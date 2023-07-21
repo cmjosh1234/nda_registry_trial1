@@ -78,3 +78,7 @@ a#add {
 	font-family: arial;
 	font-size: 12px;
 }
+img{
+	display: flex;
+	justify-content: left;
+}
