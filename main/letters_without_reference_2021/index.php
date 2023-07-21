@@ -23,7 +23,7 @@
 <table cellspacing="0" cellpadding="2" id="resultTable">
 <thead>
 	<tr>
-		<th width="5%"> LETTER REF</th>
+		<th width="5%"> LETTER_REF</th>
 		<th width="7%"> ADDRESSED TO</th>
 		<th width="10%"> SUBJECT</th>
 		<th width="10%"> DATE OF LETTER</th>
