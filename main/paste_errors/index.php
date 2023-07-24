@@ -1,4 +1,4 @@
-<script src="argiepolicarpio.js" type="text/javascript" charset="utf-8"></script>
+<script src="../argiepolicarpio.js" type="text/javascript" charset="utf-8"></script>
 <script src="../js/searchFunction.js" type="text/javascript" charset="utf-8"></script>
 <link href="../style.css" rel="stylesheet" type="text/css" />
 <link href="src/facebox.css" media="screen" rel="stylesheet" type="text/css" />
