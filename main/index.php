@@ -14,7 +14,7 @@
     })
   </script>
 <div id="log"> 
-INCOMING 2021 | <a href="letters_without_reference_2021/index.php">LETTERS WITHOUT REFERENCE 2021</a> | <a href="paste_errors/index.php">PASTE ERRORS</a>
+INCOMING 2021 | <a href="letters_without_reference_2021/index.php">LETTERS WITHOUT REFERENCE 2021</a> | <a href="paste_errors/index.php">PASTE ERRORS</a>| <a href="staff/index.php">STAFF</a>
 </div>
 <div id="formdesign">
 <input type="text" name="filter" value="" id="filter" placeholder="Search Record..." autocomplete="off" />
@@ -24,11 +24,11 @@ INCOMING 2021 | <a href="letters_without_reference_2021/index.php">LETTERS WITHO
 <table cellspacing="0" cellpadding="2" id="resultTable">
 <thead>
 	<tr>
-		<th width="5px"> RECEIVED</th>
-		<th width="7px"> REF</th>
-		<th width="10px"> SENDER </th>
-		<th width="10px"> SUB </th>
-		<th width="23px"> TO(DEPT) </th>
+		<th width="5%"> RECEIVED</th>
+		<th width="7%"> REF</th>
+		<th width="10%"> SENDER </th>
+		<th width="10%"> SUB </th>
+		<th width="23%"> TO(DEPT) </th>
 		<th width="10%"> RECEIVED BY </th>
 		<th width="5%"> OUTGOING LETTER </th>
 		<th width="10%"> REF NO </th>
@@ -95,11 +95,8 @@ INCOMING 2021 | <a href="letters_without_reference_2021/index.php">LETTERS WITHO
         $result = $db->prepare("SELECT COUNT(*) FROM incoming2021");     
         $result->execute();    
 		$row = $result->fetch();    
-
         $total_rows = $row[0];              
-
     echo "</br>";            
-
         // get the required number of pages
         $total_pages = ceil($total_rows / $limit);     
         $pageURL = "";    

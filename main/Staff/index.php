@@ -13,32 +13,28 @@
     })
   </script>
 <div id="log">
-<a href="../index.php"> INCOMING 2021 </a> | <a href="../letters_without_reference_2021/index.php">LETTERS WITHOUT REFERENCE 2021</a> | PASTE ERRORS | <a href="../Staff/index.php"> STAFF </a>
+<a href="../index.php"> INCOMING 2021 </a> | <a href="../letters_without_reference_2021/index.php">LETTERS WITHOUT REFERENCE 2021</a> | <a href="../paste_errors/index.php"> PASTE ERRORS </a> |  STAFF
 </div>
 <div id="formdesign">
 <input type="text" name="filter" value="" id="filter" placeholder="Search Record..." autocomplete="off" />
-<a rel="facebox" href="add_pe.php" id="add">ADD RECORD</a>
+<a rel="facebox" href="add.php" id="add">ADD RECORD</a>
 </div>
 <div class="scrollingTable">
 <table cellspacing="0" cellpadding="2" id="resultTable">
 <thead>
 	<tr>
-		<th width="5px"> Field0</th>
+		<th width="10%"> NAME </th>
 	</tr>
 </thead>
 <tbody>
 	<?php
 		include('../connect.php');		
-		$result = $db->prepare("SELECT * FROM paste_errors ORDER BY id DESC LIMIT 20");
+		$result = $db->prepare("SELECT * FROM staff ORDER BY id DESC LIMIT 20"); 
 		$result->execute();
-		for($i=0; $row = $result-> fetch(); $i++){ 
-			
-		/*$query = "SELECT * FROM paste_errors ORDER BY id DESC LIMIT 20";
-		$result = mysqli_query($con, $query);
-		for($i=0; $row = $result-> fetch_row(); $i++){ */
-			?>
-			<tr class="paste_errors">
-		<td><?php echo $row['Field0']; ?></td>
+		for($i=0; $row = $result->fetch(); $i++){
+	?>
+	<tr class="staff"><!-- changed record to incoming2021 -->
+		<td><?php echo $row['STAFF_NAME']; ?></td>										
 		<td><a rel="facebox" href="editform.php?id=<?php echo $row['id']; ?>"> Edit </a> | <a href="delete.php?id=<?php echo $row['id']; ?>" class="delbutton" title="Click To Delete">Delete</a></td>
 	</tr>
 	<?php
@@ -47,9 +43,12 @@
 </tbody>
 </table>
 </div>
+
 <?php 
 	include_once('../includes/footer.php')
 ?>
+
+
 <script src="../js/searchFunction.js"></script>
 <script type="text/javascript">
 $(function() {

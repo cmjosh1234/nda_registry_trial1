@@ -1,7 +1,7 @@
 <script src="../argiepolicarpio.js" type="text/javascript" charset="utf-8"></script>
-<script src="../js/searchFunction.js" type="text/javascript" charset="utf-8"></script>
-<link href="../style.css" rel="stylesheet" type="text/css" />
-<link href="src/facebox.css" media="screen" rel="stylesheet" type="text/css" />
+<script src="../js/application.js" type="text/javascript" charset="utf-8"></script>
+<link href="style.css" rel="stylesheet" type="text/css" />
+<link href="../src/facebox.css" media="screen" rel="stylesheet" type="text/css" />
    <script src="../lib/jquery.js" type="text/javascript"></script>
   <script src="../src/facebox.js" type="text/javascript"></script>
   <script type="text/javascript">
@@ -13,11 +13,11 @@
     })
   </script>
 <div id="log">
-<a href="../index.php"> INCOMING 2021 </a> | LETTERS WITHOUT REFERENCE 2021 | <a href="../paste_errors/index.php">PASTE ERRORS</a>
+<a href="../index.php"> INCOMING 2021 </a> | LETTERS WITHOUT REFERENCE 2021 | <a href="../paste_errors/index.php">PASTE ERRORS</a> | <a href="../Staff/index.php">STAFF</a>
 </div>
 <div id="formdesign">
 <input type="text" name="filter" value="" id="filter" placeholder="Search Record..." autocomplete="off" />
-<a rel="facebox" href="add_pe.php" id="add">ADD RECORD</a>
+<a rel="facebox" href="add_le.php" id="add">ADD RECORD</a>
 </div>
 <div class="scrollingTable">
 <table cellspacing="0" cellpadding="2" id="resultTable">
@@ -37,18 +37,7 @@
 </thead>
 <tbody>
 	<?php
-		include('../connect.php');	
-				// variable to store number of rows per page
-				$limit = 20;
-				// update the active page number
-				if (isset($_GET["page"])) {    
-					$page_number  = $_GET["page"];}
-				else {    
-				  $page_number=1;    }       
-				// get the initial page number
-				$initial_page = ($page_number-1) * $limit;       
-				// get data of selected rows per page 
-		
+		include('../connect.php');		
 		$result = $db->prepare("SELECT * FROM letters_without_reference_2021 ORDER BY id DESC LIMIT 15"); 
 		$result->execute();
 		for($i=0; $row = $result->fetch(); $i++){
@@ -73,56 +62,15 @@
 </table>
 </div>
 
-<?php  
-        $result = $db->prepare("SELECT COUNT(*) FROM letters_without_reference_2021");     
-        $result->execute();    
-		$row = $result->fetch();    
-        $total_rows = $row[0];              
-    echo "</br>";            
-        // get the required number of pages
-        $total_pages = ceil($total_rows / $limit);     
-        $pageURL = "";    
-        if($page_number>=2){   
-            echo "<a href='index.php?page=".($page_number-1)."'>  Prev </a>";   }                          
-        for ($i=1; $i<=$total_pages; $i++) {   
-		"<div id=pageNo>";
-          if ($i == $page_number) {   
-              $pageURL .= "<a class = 'active' href='index.php?page=" .$i."'>".$i. "</a>"; 
-			} else {
-              $pageURL .= "<a href='index.php?page=".$i."'>  ".$i."</a>"; }
-		"</div>";
-		};     
-        echo $pageURL;    
-        if($page_number<$total_pages){   
-            echo "<a href='index.php?page=".($page_number+1)."'>  Next </a>";   
-        } 
-?>
-</div>    
-<div class="inline">   
-<input id="page" type="number" min="1" max="<?php echo $total_pages?>"   
-placeholder="<?php echo $page_number."/".$total_pages; ?>" required>   
-<button onClick="go2Page();">Go</button>   
-</div>    
-</div>   
-</div>  
-
-<script>   
-function go2Page()   
-{   
-  var page = document.getElementById("page").value;   
-  page = ((page><?php echo $total_pages; ?>)?<?php echo $total_pages; ?>:((page<1)?1:page));   
-  window.location.href = 'index.php?page='+page;   
-}  
-</script>      
-
 <?php 
 	include_once('../includes/footer.php')
 ?>
 
 
-<script src="js/jquery.js"></script>
-  <script type="text/javascript">
+<script src="../js/searchFunction.js"></script>
+<script type="text/javascript">
 $(function() {
+
 
 $(".delbutton").click(function(){
 
