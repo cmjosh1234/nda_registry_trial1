@@ -173,9 +173,7 @@ var del_id = element.attr("id");
 
 //Built a url to send
 var info = 'id=' + del_id;
- if(confirm("Sure you want to delete this update? There is NO undo!"))
-		  {
-
+ if(confirm("Sure you want to delete this update? There is NO undo!")){
  $.ajax({
    type: "GET",
    url: "delete.php",
@@ -195,4 +193,4 @@ return false;
 
 });
 </script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+<script  //src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" //integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" /crossorigin="anonymous"></script>

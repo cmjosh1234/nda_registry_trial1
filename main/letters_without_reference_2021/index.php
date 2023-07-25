@@ -17,7 +17,7 @@
 </div>
 <div id="formdesign">
 <input type="text" name="filter" value="" id="filter" placeholder="Search Record..." autocomplete="off" />
-<a rel="facebox" href="add_le.php" id="add">ADD RECORD</a>
+<a rel="facebox" href="add_pe.php" id="add">ADD RECORD</a>
 </div>
 <div class="scrollingTable">
 <table cellspacing="0" cellpadding="2" id="resultTable">
@@ -123,7 +123,6 @@ function go2Page()
 <script src="js/jquery.js"></script>
   <script type="text/javascript">
 $(function() {
-
 
 $(".delbutton").click(function(){
 

@@ -31,9 +31,13 @@
 		include('../connect.php');		
 		$result = $db->prepare("SELECT * FROM paste_errors ORDER BY id DESC LIMIT 20");
 		$result->execute();
-		for($i=0; $row = $result->fetch(); $i++){
-	?>
-	<tr class="paste_errors"><!-- changed record to incoming2021 -->
+		for($i=0; $row = $result-> fetch(); $i++){ 
+			
+		/*$query = "SELECT * FROM paste_errors ORDER BY id DESC LIMIT 20";
+		$result = mysqli_query($con, $query);
+		for($i=0; $row = $result-> fetch_row(); $i++){ */
+			?>
+			<tr class="paste_errors">
 		<td><?php echo $row['Field0']; ?></td>
 		<td><a rel="facebox" href="editform.php?id=<?php echo $row['id']; ?>"> Edit </a> | <a href="delete_pe.php?id=<?php echo $row['id']; ?>" class="delbutton" title="Click To Delete">Delete</a></td>
 	</tr>
