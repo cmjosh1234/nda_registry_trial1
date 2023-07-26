@@ -48,7 +48,7 @@
 </table>
 </div>
 <?php 
-	include_once('../includes/footer.php')
+	include_once('../includes/footer2.php')
 ?>
 <script src="../js/searchFunction.js"></script>
 <script type="text/javascript">

@@ -16,14 +16,15 @@
 <a href="../index.php"> INCOMING 2021 </a> | <a href="../letters_without_reference_2021/index.php">LETTERS WITHOUT REFERENCE 2021</a> | <a href="../paste_errors/index.php"> PASTE ERRORS </a> |  STAFF
 </div>
 <div id="formdesign">
-<input type="text" name="filter" value="" id="filter" placeholder="Search Record..." autocomplete="off" />
-<a rel="facebox" href="add.php" id="add">ADD RECORD</a>
+<input type="text" name="filter" value="" id="filter" placeholder="Search Member..." autocomplete="off" />
+<a rel="facebox" href="add.php" id="add">ADD STAFF</a>
 </div>
 <div class="scrollingTable">
 <table cellspacing="0" cellpadding="2" id="resultTable">
 <thead>
 	<tr>
-		<th width="10%"> NAME </th>
+		<th width="20%"> NAME </th>
+		<th width="10%"> TELEPHONE NUMBER </th>
 	</tr>
 </thead>
 <tbody>
@@ -34,7 +35,8 @@
 		for($i=0; $row = $result->fetch(); $i++){
 	?>
 	<tr class="staff"><!-- changed record to incoming2021 -->
-		<td><?php echo $row['STAFF_NAME']; ?></td>										
+		<td><?php echo $row['STAFF_NAME']; ?></td>	
+		<td><?php echo $row['TELEPHONE_NUMBER']; ?></td>										
 		<td><a rel="facebox" href="editform.php?id=<?php echo $row['id']; ?>"> Edit </a> | <a href="delete.php?id=<?php echo $row['id']; ?>" class="delbutton" title="Click To Delete">Delete</a></td>
 	</tr>
 	<?php
@@ -45,7 +47,7 @@
 </div>
 
 <?php 
-	include_once('../includes/footer.php')
+	include_once('../includes/footer2.php')
 ?>
 
 

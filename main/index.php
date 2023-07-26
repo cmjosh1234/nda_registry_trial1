@@ -60,10 +60,9 @@ INCOMING 2021 | <a href="letters_without_reference_2021/index.php">LETTERS WITHO
 
 		$result = $db->prepare("SELECT * FROM incoming2021 ORDER BY id DESC LIMIT $initial_page, $limit");
 		$result->execute();
-		for($i=0; $row = $result->fetch(); $i++){
-		//while ($row = mysqli_fetch_array($result)) {  
+		for($i=0; $row = $result->fetch(); $i++){ 
 	?>
-	<tr class="incoming2021"><!-- changed record to incoming2021 -->
+	<tr class="incoming2021">
 		<td><?php echo $row['DATE_RECEIEVED']; ?></td>
 		<td><?php echo $row['REF']; ?></td>
 		<td><?php echo $row['SENDER']; ?></td>
@@ -153,7 +152,7 @@ function go2Page()
 
 
 <?php 
-	include_once('includes/footer.php')
+	include_once('includes/footer2.php')
 ?>
 <script src="js/jquery.js"></script>
   <script type="text/javascript">

@@ -9,7 +9,7 @@
 <form action="edit.php" method="POST">
 <input type="hidden" name="memids" value="<?php echo $id; ?>" />
 RECEIVED<br>
-<input type="text" name="DATE_RECEIEVED" value="<?php echo $rows['DATE_RECEIEVED']; ?>" /><br><br>
+<input type="date" name="DATE_RECEIEVED" value="<?php echo $rows['DATE_RECEIEVED']; ?>" /><br><br>
 REF<br>
 <input type="text" name="REF" value="<?php echo $rows['REF']; ?>" /><br><br>
 SENDER<br>

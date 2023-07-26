@@ -25,15 +25,14 @@
 	<tr>
 		<th width="5%"> LETTER_REF</th>
 		<th width="7%"> ADDRESSED TO</th>
-		<th width="10%"> SUBJECT</th>
-		<th width="10%"> DATE OF LETTER</th>
+		<th width="50%"> SUBJECT</th>
+		<th width="15%"> DATE OF LETTER</th>
 		<th width="23%"> DATE RECIEVED AT REGISTRY</th>
-		<th width="10%"> RECIPIENT</th>
+		<th width="100%"> RECIPIENT</th>
 		<th width="5%"> DATE DELIVERED</th>
 		<th width="10%"> FILE NAME </th>
 		<th width="10%"> FILE NO </th>
 		<th width="10%"> BOX NO </th>
-	</tr>
 </thead>
 <tbody>
 	<?php
@@ -63,7 +62,7 @@
 </div>
 
 <?php 
-	include_once('../includes/footer.php')
+	include_once('../includes/footer2.php')
 ?>
 
 
