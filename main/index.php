@@ -133,7 +133,6 @@ placeholder="<?php echo $page_number."/".$total_pages; ?>" required>
 </div>  
 
 <script>   
-
 function go2Page()   
 
 {   
@@ -146,9 +145,7 @@ function go2Page()
 
 }   
 
-</script>      
-
-
+</script> 
 
 
 <?php 

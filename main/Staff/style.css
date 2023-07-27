@@ -32,8 +32,7 @@ table tbody tr td{
 	height: 34px;
 }
 #filter {
-	-moz-box-sizing: border-box;
-    background: url("img/big_search.png") no-repeat scroll 10px 10px #FFFFFF;
+    background: url("../img/big_search.png") no-repeat scroll 10px 10px #FFFFFF;
     box-shadow: none;
     display: block;
     font-size: 12px;
