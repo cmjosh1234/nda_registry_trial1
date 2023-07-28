@@ -2,21 +2,22 @@
 <script src="../js/application.js" type="text/javascript" charset="utf-8"></script>
 <link href="style.css" rel="stylesheet" type="text/css" />
 <style>
-	.paging{
-		margin-top: 10px;
-	}
-	.paging a{
-		display: inline-block;
-		padding: 5px 10px;
-		margin: 0 3px;
-		border: 1px solid #ccc;
-		text-decoration: none;
-		color: #333;
-	}
-	.paging a.active{
-		background-color: #007bff;
-		color: #fff;
-	}
+.paging{
+	margin-top: 10px;
+}
+.paging a{
+	display: inline-block;
+	padding: 5px 10px;
+	margin: 0 3px;
+	border: 1px solid #ccc;
+	text-decoration: none;
+	color: #333;
+}
+.paging a.active{
+	background-color: #007bff;
+	color: #fff;
+}
+.paging a:hover:not(.active) {background-color: #ddd;}
 </style>
 <link href="../src/facebox.css" media="screen" rel="stylesheet" type="text/css" />
    <script src="../lib/jquery.js" type="text/javascript"></script>
