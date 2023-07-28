@@ -36,6 +36,7 @@ INCOMING 2021 | <a href="letters_without_reference_2021/index.php">LETTERS WITHO
 </div>
 <div id="formdesign">
 <input type="text" name="filter" value="" id="filter" placeholder="Search Record..." autocomplete="off" />
+<button id="searchBtn">Search</button>
 <a rel="facebox" href="add.php" id="add">ADD RECORD</a>
 </div>
 <table cellspacing="0" cellpadding="2" id="resultTable">
