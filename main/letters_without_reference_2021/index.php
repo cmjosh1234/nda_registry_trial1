@@ -1,6 +1,12 @@
+<<<<<<< HEAD
+<script src="argiepolicarpio.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/searchFunction.js" type="text/javascript" charset="utf-8"></script>
+<link href="../style.css" rel="stylesheet" type="text/css" />
+=======
 <script src="../argiepolicarpio.js" type="text/javascript" charset="utf-8"></script>
 <script src="../js/application.js" type="text/javascript" charset="utf-8"></script>
 <link href="style.css" rel="stylesheet" type="text/css" />
+<<<<<<< HEAD
 <style>
 	.paging{
 		margin-top: 10px;
@@ -18,6 +24,9 @@
 		color: #fff;
 	}
 </style>
+=======
+>>>>>>> 5526111941cc9f3ee46b0fd4432fdabe53858574
+>>>>>>> 037832ab9c47c191f1eced0234a0077b3bee3819
 <link href="../src/facebox.css" media="screen" rel="stylesheet" type="text/css" />
    <script src="../lib/jquery.js" type="text/javascript"></script>
   <script src="../src/facebox.js" type="text/javascript"></script>
