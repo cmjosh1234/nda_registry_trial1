@@ -1,6 +1,23 @@
 <script src="../argiepolicarpio.js" type="text/javascript" charset="utf-8"></script>
 <script src="../js/application.js" type="text/javascript" charset="utf-8"></script>
 <link href="style.css" rel="stylesheet" type="text/css" />
+<style>
+	.paging{
+		margin-top: 10px;
+	}
+	.paging a{
+		display: inline-block;
+		padding: 5px 10px;
+		margin: 0 3px;
+		border: 1px solid #ccc;
+		text-decoration: none;
+		color: #333;
+	}
+	.paging a.active{
+		background-color: #007bff;
+		color: #fff;
+	}
+</style>
 <link href="../src/facebox.css" media="screen" rel="stylesheet" type="text/css" />
    <script src="../lib/jquery.js" type="text/javascript"></script>
   <script src="../src/facebox.js" type="text/javascript"></script>
@@ -23,16 +40,26 @@
 <table cellspacing="0" cellpadding="2" id="resultTable">
 <thead>
 	<tr>
-		<th width="5%"> LETTER_REF</th>
+	<!--	<th width="5%"> LETTER_REF</th>
 		<th width="7%"> ADDRESSED TO</th>
-		<th width="50%"> SUBJECT</th>
+		<th width="500%"> SUBJECT</th>
 		<th width="15%"> DATE OF LETTER</th>
 		<th width="23%"> DATE RECIEVED AT REGISTRY</th>
-		<th width="100%"> RECIPIENT</th>
+		<th width="10%"> RECIPIENT</th>
 		<th width="5%"> DATE DELIVERED</th>
 		<th width="10%"> FILE NAME </th>
-		<th width="10%"> FILE NO </th>
-		<th width="10%"> BOX NO </th>
+		<th width="10%"> FILE NUMBER </th>
+		<th width="10%"> BOX NUMBER</th> -->
+		<th> LETTER_REF</th>
+		<th> ADDRESSED TO</th>
+		<th width="23%"> SUBJECT</th>
+		<th width="23%"> DATE OF LETTER</th>
+		<th width="23%"> DATE RECIEVED AT REGISTRY</th>
+		<th> RECIPIENT</th>
+		<th> DATE DELIVERED</th>
+		<th> FILE NAME </th>
+		<th> FILE NUMBER </th>
+		<th> BOX NUMBER</th>
 </thead>
 <tbody>
 	<?php
@@ -74,7 +101,7 @@
 </table>
 </div>
 
-
+<div class="paging">
 <?php  
         $result = $db->prepare("SELECT COUNT(*) FROM letters_without_reference_2021");     
         $result->execute();    
@@ -82,29 +109,31 @@
         $total_rows = $row[0];              
     echo "</br>";            
         // get the required number of pages
-        $total_pages = ceil($total_rows / $limit);     
-        $pageURL = "";    
-		         
+        $total_pages = ceil($total_rows / $limit);  
+		$pagination_limit = 28; // Change this value to limit the number of page numbers shown
+		$half_pagination = ceil($pagination_limit / 2);
+		$start_page = max(1, $page_number - $half_pagination);
+		$end_page = min($start_page + $pagination_limit - 1, $total_pages);   
+        $pageURL = "";     
         if($page_number>=2){   
             echo "<a href='index.php?page=".($page_number-1)."'>  Prev </a>";   }                          
-        for ($i=1; $i<=$total_pages; $i++) {   
-		"<div id=pageNo>";
+        for ($i=$start_page; $i<=$end_page; $i++) {   
+		"<div class=pageNo>";
           if ($i == $page_number) {   
               $pageURL .= "<a class = 'active' href='index.php?page=" .$i."'>".$i. " </a>"; 
 			} else {
               $pageURL .= "<a href='index.php?page=".$i."'>  ".$i." </a>"; }
 		"</div>";
 		};     
+
         echo $pageURL;    
         if($page_number<$total_pages){   
             echo "<a href='index.php?page=".($page_number+1)."'>  Next </a>";   
-        }  
-		
+        }		
 ?>
 </div>    
 
 <div class="inline">   
-
 <input id="page" type="number" min="1" max="<?php echo $total_pages?>"   
 
 placeholder="<?php echo $page_number."/".$total_pages; ?>" required>   

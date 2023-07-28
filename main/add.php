@@ -9,7 +9,16 @@ SENDER<br>
 SUBJECT<br>
 <input type="text" name="SUBJECT" /><br><br>
 TO (DEPT)<br>
-<input type="text" name="TODEPT" /><br><br>
+<select name="TODEPT" class="ed">
+	<?php
+	include('connect.php');		
+        $result = $db->prepare("SELECT DISTINCT DEPARTMENT FROM staff");
+		$result->execute();
+		for($i=0; $row = $result->fetch(); $i++){
+        echo '<option value="'.$row['DEPARTMENT'].'">'.$row['DEPARTMENT'].'</option>';
+		}//Closes drop down box
+	?>
+</select><br /><br>
 RECEIVED BY<br>
 <select name="RECEIVED_BY" class="ed">
 	<?php
@@ -27,7 +36,17 @@ OUTGOING LETTER<br>
 REF NO<br>
 <input type="text" name="REF_NO" /><br><br>
 SENDING DEPT<br>
-<input type="text" name="SENDING_DEPT" /><br><br>
+<select name="SENDING_DEPT" class="ed">
+	<?php
+	include('connect.php');		
+        $result = $db->prepare("SELECT DISTINCT DEPARTMENT FROM staff");
+		$result->execute();
+		for($i=0; $row = $result->fetch(); $i++){
+        echo '<option value="'.$row['DEPARTMENT'].'">'.$row['DEPARTMENT'].'</option>';
+		}//Closes drop down box
+	?>
+</select><br /><br>
+
 RECEIVED AT REGISTRY<br>
 <input type="date" name="DATE_RECIEVED_AT_REGISTRY" /><br><br>
 RECEIVED BY<br>

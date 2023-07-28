@@ -1,6 +1,23 @@
 <script src="../argiepolicarpio.js" type="text/javascript" charset="utf-8"></script>
 <script src="../js/application.js" type="text/javascript" charset="utf-8"></script>
 <link href="style.css" rel="stylesheet" type="text/css" />
+<style>
+	.paging{
+		margin-top: 10px;
+	}
+	.paging a{
+		display: inline-block;
+		padding: 5px 10px;
+		margin: 0 3px;
+		border: 1px solid #ccc;
+		text-decoration: none;
+		color: #333;
+	}
+	.paging a.active{
+		background-color: #007bff;
+		color: #fff;
+	}
+</style>
 <link href="../src/facebox.css" media="screen" rel="stylesheet" type="text/css" />
    <script src="../lib/jquery.js" type="text/javascript"></script>
   <script src="../src/facebox.js" type="text/javascript"></script>
@@ -26,6 +43,7 @@
 	<tr>
 		<th width="20%"> NAME </th>
 		<th width="10%"> TELEPHONE NUMBER </th>
+		<th width="10%"> DEPARTMENT </th>
 	</tr>
 </thead>
 <tbody>
@@ -50,6 +68,7 @@
 	<tr class="staff">
     <td><?php echo $row['STAFF_NAME']; ?></td>	
 		<td><?php echo $row['TELEPHONE_NUMBER']; ?></td>
+		<td><?php echo $row['DEPARTMENT']; ?></td>
 		<td><a rel="facebox" href="editform.php?id=<?php echo $row['id']; ?>"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen" viewBox="0 0 16 16">  <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z"/></svg> </a> - -
 		<a href="#" id="<?php echo $row['id']; ?>" class="delbutton" title="Click To Delete"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">  <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z"/></svg></a></td>
 	</tr>
@@ -60,7 +79,7 @@
 </table>
 </div>
 
-
+<div class="paging">
 <?php  
         $result = $db->prepare("SELECT COUNT(*) FROM staff");     
         $result->execute();    
@@ -68,24 +87,27 @@
         $total_rows = $row[0];              
     echo "</br>";            
         // get the required number of pages
-        $total_pages = ceil($total_rows / $limit);     
-        $pageURL = "";    
-		         
+        $total_pages = ceil($total_rows / $limit);  
+		$pagination_limit = 28; // Change this value to limit the number of page numbers shown
+		$half_pagination = ceil($pagination_limit / 2);
+		$start_page = max(1, $page_number - $half_pagination);
+		$end_page = min($start_page + $pagination_limit - 1, $total_pages);   
+        $pageURL = "";     
         if($page_number>=2){   
             echo "<a href='index.php?page=".($page_number-1)."'>  Prev </a>";   }                          
-        for ($i=1; $i<=$total_pages; $i++) {   
-		"<div id=pageNo>";
+        for ($i=$start_page; $i<=$end_page; $i++) {   
+		"<div class=pageNo>";
           if ($i == $page_number) {   
               $pageURL .= "<a class = 'active' href='index.php?page=" .$i."'>".$i. " </a>"; 
 			} else {
               $pageURL .= "<a href='index.php?page=".$i."'>  ".$i." </a>"; }
 		"</div>";
 		};     
+
         echo $pageURL;    
         if($page_number<$total_pages){   
             echo "<a href='index.php?page=".($page_number+1)."'>  Next </a>";   
-        }  
-
+        }		
 ?>
 </div>    
 
