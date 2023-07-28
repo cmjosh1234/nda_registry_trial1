@@ -44,10 +44,9 @@ table tbody tr td{
 	margin: 20px auto;
 	width: 83%;
 	clear: both;
-	height: 34px;
+	height: 34px;	
 }
 #filter {
-	-moz-box-sizing: border-box;
     background: url("img/big_search.png") no-repeat scroll 10px 10px #FFFFFF;
     box-shadow: none;
     display: block;
@@ -55,13 +54,13 @@ table tbody tr td{
     height: 34px;
     padding: 9px 140px 9px 28px;display: block;
     font-size: 12px;
-    height: 34px;
     padding: 9px 140px 9px 28px;
     width: 85%;
 	border: 1px solid #DADADA;
     transition: border 0.2s linear 0s, box-shadow 0.2s linear 0s;
 	padding-top: 6px;
 	float: left;
+	overflow: auto;
 }
 #add {
 	float: right;
@@ -77,4 +76,8 @@ a#add {
 	color: #666666;
 	font-family: arial;
 	font-size: 12px;
+}
+img{
+	display: flex;
+	justify-content: left;
 }

@@ -13,18 +13,19 @@
     })
   </script>
 <div id="log">
-<a href="../index.php"> INCOMING 2021 </a> | <a href="../letters_without_reference_2021/index.php">LETTERS WITHOUT REFERENCE 2021</a> | PASTE ERRORS |  <a href="../Staff/index.php"> STAFF </a>
+<a href="../index.php"> INCOMING 2021 </a> | <a href="../letters_without_reference_2021/index.php">LETTERS WITHOUT REFERENCE 2021</a> | <a href="../paste_errors/index.php"> PASTE ERRORS </a> |  STAFF
 </div>
 <div id="formdesign">
 <input type="text" name="filter" value="" id="filter" placeholder="Search Staff..." autocomplete="off" />
-<a rel="facebox" href="add_pe.php" id="add">ADD RECORD</a>
+<a rel="facebox" href="add.php" id="add">ADD RECORD</a>
 </div>
 <div class="scrollingTable">
 <table cellspacing="0" cellpadding="2" id="resultTable">
 <thead>
 	<tr>
 	<tr>
-		<th> Field0 </th>
+		<th width="20%"> NAME </th>
+		<th width="10%"> TELEPHONE NUMBER </th>
 	</tr>
 </thead>
 <tbody>
@@ -42,17 +43,18 @@
 		// get data of selected rows per page 
 		
 
-		$result = $db->prepare("SELECT * FROM paste_errors ORDER BY id DESC LIMIT $initial_page, $limit"); 
+		$result = $db->prepare("SELECT * FROM staff ORDER BY id DESC LIMIT $initial_page, $limit"); 
 		$result->execute();
 		for($i=0; $row = $result->fetch(); $i++){
 	?>
-	<tr class="paste_errors">
-    <td><?php echo $row['Field0']; ?></td>	
-	<td><a rel="facebox" href="editform.php?id=<?php echo $row['id']; ?>"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen" viewBox="0 0 16 16">  <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z"/></svg> </a> - -
+	<tr class="staff">
+    <td><?php echo $row['STAFF_NAME']; ?></td>	
+		<td><?php echo $row['TELEPHONE_NUMBER']; ?></td>
+		<td><a rel="facebox" href="editform.php?id=<?php echo $row['id']; ?>"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen" viewBox="0 0 16 16">  <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z"/></svg> </a> - -
 		<a href="#" id="<?php echo $row['id']; ?>" class="delbutton" title="Click To Delete"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">  <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z"/></svg></a></td>
 	</tr>
 	<?php
-	}
+		}
 	?>
 </tbody>
 </table>
@@ -60,7 +62,7 @@
 
 
 <?php  
-        $result = $db->prepare("SELECT COUNT(*) FROM paste_errors");     
+        $result = $db->prepare("SELECT COUNT(*) FROM staff");     
         $result->execute();    
 		$row = $result->fetch();    
         $total_rows = $row[0];              
