@@ -1,4 +1,4 @@
-$(document).ready(function() {
+/*$(document).ready(function() {
 	zebraRows('tr:odd td', 'odd');
 	
 	$('tbody tr').hover(function(){
@@ -104,4 +104,50 @@ function filter(selector, query) {
   $(selector).each(function() {
     ($(this).text().search(new RegExp(query, "i")) < 0) ? $(this).hide().removeClass('visible') : $(this).show().addClass('visible');
   });
-}
+}*/
+$(document).ready(function () {
+	// Apply zebra striping to rows and add hover effect
+	zebraRows('tr:odd td', 'odd');
+	$('tbody tr').hover(function () {
+	  $(this).find('td').addClass('hovered');
+	}, function () {
+	  $(this).find('td').removeClass('hovered');
+	});
+  
+	// Override CSS display:none property to show the filter box
+	$('#search').show();
+  
+	// Search button click event
+	$('#searchBtn').click(function () {
+	  var query = $('#filter').val(); // Get the search query
+  
+	  // Perform AJAX call to fetch data from the server
+	  $.ajax({
+		type: 'POST',
+		url: 'search.php', // Replace with the actual URL for your server-side search script
+		data: { query: query }, // Pass the search query as data
+		success: function (response) {
+		  // Update the table body with the retrieved data
+		  $('tbody').html(response);
+  
+		  // Reapply zebra rows and other necessary styles
+		  zebraRows('tr:odd td', 'odd');
+		  $('tbody tr').hover(function () {
+			$(this).find('td').addClass('hovered');
+		  }, function () {
+			$(this).find('td').removeClass('hovered');
+		  });
+		},
+		error: function (xhr, status, error) {
+		  // Handle errors if needed
+		  console.error('Error:', error);
+		}
+	  });
+	});
+  });
+  
+  // Function to apply alternating row styles
+  function zebraRows(selector, className) {
+	$(selector).removeClass(className).addClass(className);
+  }
+  

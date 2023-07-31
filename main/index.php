@@ -2,6 +2,24 @@
 <script src="argiepolicarpio.js" type="text/javascript" charset="utf-8"></script>
 <script src="js/searchFunction.js" type="text/javascript" charset="utf-8"></script>
 <link href="style.css" rel="stylesheet" type="text/css" />
+<style>
+.paging{
+	margin-top: 10px;
+}
+.paging a{
+	display: inline-block;
+	padding: 5px 10px;
+	margin: 0 3px;
+	border: 1px solid #ccc;
+	text-decoration: none;
+	color: #333;
+}
+.paging a.active{
+	background-color: #007bff;
+	color: #fff;
+}
+.paging a:hover:not(.active) {background-color: #ddd;}
+</style>
 <link href="src/facebox.css" media="screen" rel="stylesheet" type="text/css" />
    <script src="lib/jquery.js" type="text/javascript"></script>
   <script src="src/facebox.js" type="text/javascript"></script>
@@ -18,28 +36,28 @@ INCOMING 2021 | <a href="letters_without_reference_2021/index.php">LETTERS WITHO
 </div>
 <div id="formdesign">
 <input type="text" name="filter" value="" id="filter" placeholder="Search Record..." autocomplete="off" />
+<button id="searchBtn">Search</button>
 <a rel="facebox" href="add.php" id="add">ADD RECORD</a>
 </div>
-<div class="scrollingTable">
 <table cellspacing="0" cellpadding="2" id="resultTable">
 <thead>
 	<tr>
-		<th width="5%"> RECEIVED</th>
+		<th width="5%"> DATE 	RECEIVED</th>
 		<th width="7%"> REF</th>
 		<th width="10%"> SENDER </th>
-		<th width="10%"> SUB </th>
+		<th width="10%"> SUBJECT </th>
 		<th width="23%"> TO(DEPT) </th>
 		<th width="10%"> RECEIVED BY </th>
 		<th width="5%"> OUTGOING LETTER </th>
 		<th width="10%"> REF NO </th>
 		<th width="10%"> SENDING (DEPT) </th>
-		<th width="10%"> RECEIVED AT REGISTRY </th>
+		<th width="10%"> DATE RECEIVED AT REGISTRY </th>
 		<th width="10%"> RECEIVED BY </th>
-		<th width="10%"> TEL </th>
+		<th width="10%"> TELEPHONE NUMBER </th>
 		<th width="10%"> RECEIVED </th>
 		<th width="10%"> FILE NAME </th>
-		<th width="10%"> FILE NO </th>
-		<th width="10%"> BOX NO </th>
+		<th width="10%"> FILE NUMBER </th>
+		<th width="10%"> BOX NUMBER </th>
 	</tr>
 </thead>
 <tbody>
@@ -87,11 +105,40 @@ INCOMING 2021 | <a href="letters_without_reference_2021/index.php">LETTERS WITHO
 	?>
 </tbody>
 </table>
-</div>
-
-
-
+<div class="paging">
 <?php  
+		$result = $db->prepare("SELECT COUNT(*) FROM incoming2021");     
+        $result->execute();    
+		$row = $result->fetch();    
+        $total_rows = $row[0];              
+    echo "</br>";            
+        // get the required number of pages
+        $total_pages = ceil($total_rows / $limit);  
+		$pagination_limit = 28; // Change this value to limit the number of page numbers shown
+		$half_pagination = ceil($pagination_limit / 2);
+		$start_page = max(1, $page_number - $half_pagination);
+		$end_page = min($start_page + $pagination_limit - 1, $total_pages);   
+        $pageURL = "";     
+        if($page_number>=2){   
+            echo "<a href='index.php?page=".($page_number-1)."'>  Prev </a>";   }                          
+        for ($i=$start_page; $i<=$end_page; $i++) {   
+		"<div class=pageNo>";
+          if ($i == $page_number) {   
+              $pageURL .= "<a class = 'active' href='index.php?page=" .$i."'>".$i. " </a>"; 
+			} else {
+              $pageURL .= "<a href='index.php?page=".$i."'>  ".$i." </a>"; }
+		"</div>";
+		};     
+
+        echo $pageURL;    
+        if($page_number<$total_pages){   
+            echo "<a href='index.php?page=".($page_number+1)."'>  Next </a>";   
+        }
+
+
+
+
+		/*
         $result = $db->prepare("SELECT COUNT(*) FROM incoming2021");     
         $result->execute();    
 		$row = $result->fetch();    
@@ -99,12 +146,11 @@ INCOMING 2021 | <a href="letters_without_reference_2021/index.php">LETTERS WITHO
     echo "</br>";            
         // get the required number of pages
         $total_pages = ceil($total_rows / $limit);     
-        $pageURL = "";    
-		         
+        $pageURL = "";     
         if($page_number>=2){   
             echo "<a href='index.php?page=".($page_number-1)."'>  Prev </a>";   }                          
         for ($i=1; $i<=$total_pages; $i++) {   
-		"<div id=pageNo>";
+		"<div class=pageNo>";
           if ($i == $page_number) {   
               $pageURL .= "<a class = 'active' href='index.php?page=" .$i."'>".$i. " </a>"; 
 			} else {
@@ -114,24 +160,15 @@ INCOMING 2021 | <a href="letters_without_reference_2021/index.php">LETTERS WITHO
         echo $pageURL;    
         if($page_number<$total_pages){   
             echo "<a href='index.php?page=".($page_number+1)."'>  Next </a>";   
-        }  
-		
+        }  	*/
 ?>
-</div>    
+</div>
 
 <div class="inline">   
-
 <input id="page" type="number" min="1" max="<?php echo $total_pages?>"   
-
 placeholder="<?php echo $page_number."/".$total_pages; ?>" required>   
-
 <button onClick="go2Page();">Go</button>   
-
 </div>    
-
-</div>   
-
-</div>  
 
 <script>   
 function go2Page()   
@@ -150,7 +187,7 @@ function go2Page()
 
 
 <?php 
-	include_once('includes/footer2.php')
+	include_once('includes/footer.php')
 ?>
 <script src="js/jquery.js"></script>
 <script type="text/javascript">

@@ -12,6 +12,8 @@ STAFF NAME<br>
 <input type="text" name="STAFF_NAME" value="<?php echo $rows['STAFF_NAME']; ?>" /><br><br>
 TELEPHONE NUMBER<br>
 <input type="text" name="TELEPHONE_NUMBER" value="<?php echo $rows['TELEPHONE_NUMBER']; ?>" /><br><br>
+DEPARTMENT<br>
+<input type="text" name="DEPARTMENT" value="<?php echo $rows['DEPARTMENT']; ?>" /><br><br>
 <input type="submit" value="Save" />
 </form>
 <?php
