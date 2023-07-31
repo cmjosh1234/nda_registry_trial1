@@ -29,7 +29,7 @@ REF NO<br>
 SENDING DEPT<br>
 <input type="text" name="SENDING_DEPT" /><br><br>
 RECEIVED AT REGISTRY<br>
-<input type="date" name="DATE_RECIEVED_AT_REGISTRY" /><br><br>
+<input type="text" name="DATE_RECIEVED_AT_REGISTRY" /><br><br>
 RECEIVED BY<br>
 <select name="RECIEVED_BY" class="ed">
 	<?php
@@ -45,7 +45,7 @@ RECEIVED BY<br>
 TEL<br>
 <input type="text" name="TEL" /><br><br>
 RECEIVED<br>
-<input type="date" name="DATE_RECIEVED" /><br><br>
+<input type="text" name="DATE_RECIEVED" /><br><br>
 FILE NAME<br>
 <input type="text" name="FILE_NAME" /><br><br>
 FILE NUMBER<br>
