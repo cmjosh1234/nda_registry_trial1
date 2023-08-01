@@ -33,8 +33,53 @@
 <div id="log">
 <a href="../index.php"> INCOMING 2021 </a> | <a href="../letters_without_reference_2021/index.php">LETTERS WITHOUT REFERENCE 2021</a> | <a href="../paste_errors/index.php"> PASTE ERRORS </a> |  STAFF
 </div>
+
+<?php
+// Function to handle the search filter and perform the search
+function performSearch($db, $search_filter, $initial_page, $limit)
+{
+    $search_filter = '%' . $search_filter . '%'; // Add wildcards for partial matches
+    $stmt = $db->prepare("SELECT * FROM staff 
+                           WHERE 
+                               STAFF_NAME LIKE :search_filter OR
+                               TELEPHONE_NUMBER LIKE :search_filter OR
+                               DEPARTMENT LIKE :search_filter
+                           ORDER BY id DESC");
+
+    // Bind parameters to the prepared statement
+    $stmt->bindValue(':search_filter', $search_filter, PDO::PARAM_STR);
+
+    // Execute the prepared statement
+    $stmt->execute();
+
+    return $stmt;
+}
+
+// Establish database connection
+include('../connect.php');
+			// variable to store number of rows per page
+			$limit = 20;
+			$page_number = isset($_GET["page"]) ? $_GET["page"] : 1;
+			// get the initial page number
+			$initial_page = ($page_number-1) * $limit;       
+			// get data of selected rows per page 
+		if (isset($_GET['filter']) && !empty($_GET['filter'])) {
+			// Get the search filter input from the user
+			$search_filter = $_GET['filter'];
+			// Perform the search and get the result set
+			$result = performSearch($db, $search_filter,$initial_page,$limit);
+		} else {
+			// If the search filter is not set, display all records as before
+			$result = $db->prepare("SELECT * FROM staff ORDER BY id DESC LIMIT $initial_page, $limit");
+			$result->execute();
+		}
+?>
+
 <div id="formdesign">
-<input type="text" name="filter" value="" id="filter" placeholder="Search Staff..." autocomplete="off" />
+<form action="index.php" method="GET">
+        <input type="text" name="filter" value="<?php echo isset($_GET['filter']) ? $_GET['filter'] : ''; ?>" id="filter" placeholder="Search Record..." autocomplete="off" />
+        <button type="submit">Search</button>
+</form>
 <a rel="facebox" href="add.php" id="add">ADD RECORD</a>
 </div>
 <div class="scrollingTable">
@@ -49,22 +94,10 @@
 </thead>
 <tbody>
 	<?php
-		include('../connect.php');	
-		// variable to store number of rows per page
-		$limit = 20;
-		// update the active page number
-		if (isset($_GET["page"])) {    
-		$page_number  = $_GET["page"];}
-		else {    
-		  $page_number=1;    }       
-		// get the initial page number
-			$initial_page = ($page_number-1) * $limit;       
-		// get data of selected rows per page 
 		
-
-		$result = $db->prepare("SELECT * FROM staff ORDER BY id DESC LIMIT $initial_page, $limit"); 
-		$result->execute();
-		for($i=0; $row = $result->fetch(); $i++){
+		// Loop through the result set and display data
+		while ($row = $result->fetch()) {
+			// Display each row's data here...
 	?>
 	<tr class="staff">
     <td><?php echo $row['STAFF_NAME']; ?></td>	
