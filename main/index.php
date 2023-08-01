@@ -1,7 +1,7 @@
 <?php /* DISPLAYS INCOMING 2021 PAGE*/ ?>
 <script src="argiepolicarpio.js" type="text/javascript" charset="utf-8"></script>
 <script src="js/searchFunction.js" type="text/javascript" charset="utf-8"></script>
-<link href="style.css" rel="stylesheet" type="text/css" />
+<link href="style1.css" rel="stylesheet" type="text/css" />
 <style>
 .paging{
 	margin-top: 10px;
@@ -31,9 +31,6 @@
       })
     })
   </script>
-<div id="log"> 
-INCOMING 2021 | <a href="letters_without_reference_2021/index.php">LETTERS WITHOUT REFERENCE 2021</a> | <a href="paste_errors/index.php">PASTE ERRORS</a>| <a href="staff/index.php">STAFF</a>
-</div>
 
 <?php
 // Function to handle the search filter and perform the search
@@ -89,7 +86,9 @@ include('connect.php');
 			$result->execute();
 		}
 ?>
-
+<div id="log"> 
+INCOMING 2021 | <a href="letters_without_reference_2021/index.php">LETTERS WITHOUT REFERENCE 2021</a> | <a href="paste_errors/index.php">PASTE ERRORS</a>| <a href="staff/index.php">STAFF</a>
+</div>
 <div id="formdesign">
 	<form action="index.php" method="GET">
         <input type="text" name="filter" value="<?php echo isset($_GET['filter']) ? $_GET['filter'] : ''; ?>" id="filter" placeholder="Search Record..." autocomplete="off" />
@@ -97,6 +96,18 @@ include('connect.php');
     </form>
     <a rel="facebox" href="add.php" id="add">ADD RECORD</a>
 </div>
+
+<!-- <div class="topnav"> 
+INCOMING 2021 | <a href="letters_without_reference_2021/index.php">LETTERS WITHOUT REFERENCE 2021</a> | <a href="paste_errors/index.php">PASTE ERRORS</a>| <a href="staff/index.php">STAFF</a>
+<div class="search-container">
+	<form action="index.php" method="GET">
+        <input type="text" name="filter" value="<?php echo isset($_GET['filter']) ? $_GET['filter'] : ''; ?>" id="filter" placeholder="Search Record..." autocomplete="off" />
+        <button type="submit">Search</button>
+    </form>
+    <a rel="facebox" href="add.php" id="add">ADD RECORD</a>
+</div>
+</div>  -->
+
 <table cellspacing="0" cellpadding="2" id="resultTable">
 <thead>
 	<tr>
