@@ -34,15 +34,73 @@
 <div id="log"> 
 INCOMING 2021 | <a href="letters_without_reference_2021/index.php">LETTERS WITHOUT REFERENCE 2021</a> | <a href="paste_errors/index.php">PASTE ERRORS</a>| <a href="staff/index.php">STAFF</a>
 </div>
+
+<?php
+// Function to handle the search filter and perform the search
+function performSearch($db, $search_filter, $initial_page, $limit)
+{
+    $search_filter = '%' . $search_filter . '%'; // Add wildcards for partial matches
+    $stmt = $db->prepare("SELECT * FROM incoming2021 
+                           WHERE 
+                               DATE_RECEIEVED LIKE :search_filter OR
+                               REF LIKE :search_filter OR
+                               SENDER LIKE :search_filter OR
+                               SUBJECT LIKE :search_filter OR
+                               TODEPT LIKE :search_filter OR
+                               RECEIVED_BY LIKE :search_filter OR
+                               DATE_OF_OUTGOING_LETTER LIKE :search_filter OR
+                               REF_NO LIKE :search_filter OR
+                               SENDING_DEPT LIKE :search_filter OR
+                               DATE_RECIEVED_AT_REGISTRY LIKE :search_filter OR
+                               RECIEVED_BY LIKE :search_filter OR
+                               TEL LIKE :search_filter OR
+                               DATE_RECIEVED LIKE :search_filter OR
+                               FILE_NAME LIKE :search_filter OR
+                               FILE_NO LIKE :search_filter OR
+                               BOX_NO LIKE :search_filter 
+                           ORDER BY id DESC");
+
+    // Bind parameters to the prepared statement
+    $stmt->bindValue(':search_filter', $search_filter, PDO::PARAM_STR);
+
+    // Execute the prepared statement
+    $stmt->execute();
+
+    return $stmt;
+}
+
+
+// Establish database connection
+include('connect.php');
+			// variable to store number of rows per page
+			$limit = 20;
+			$page_number = isset($_GET["page"]) ? $_GET["page"] : 1;
+			// get the initial page number
+			$initial_page = ($page_number-1) * $limit;       
+			// get data of selected rows per page 
+		if (isset($_GET['filter']) && !empty($_GET['filter'])) {
+			// Get the search filter input from the user
+			$search_filter = $_GET['filter'];
+			// Perform the search and get the result set
+			$result = performSearch($db, $search_filter,$initial_page,$limit);
+		} else {
+			// If the search filter is not set, display all records as before
+			$result = $db->prepare("SELECT * FROM incoming2021 ORDER BY id DESC LIMIT $initial_page, $limit");
+			$result->execute();
+		}
+?>
+
 <div id="formdesign">
-<input type="text" name="filter" value="" id="filter" placeholder="Search Record..." autocomplete="off" />
-<button id="searchBtn">Search</button>
-<a rel="facebox" href="add.php" id="add">ADD RECORD</a>
+    <form action="index.php" method="GET">
+        <input type="text" name="filter" value="<?php echo isset($_GET['filter']) ? $_GET['filter'] : ''; ?>" id="filter" placeholder="Search Record..." autocomplete="off" />
+        <button type="submit">Search</button>
+    </form>
+    <a rel="facebox" href="add.php" id="add">ADD RECORD</a>
 </div>
 <table cellspacing="0" cellpadding="2" id="resultTable">
 <thead>
 	<tr>
-		<th width="5%"> DATE 	RECEIVED</th>
+		<th width="5%"> DATE RECEIVED</th>
 		<th width="7%"> REF</th>
 		<th width="10%"> SENDER </th>
 		<th width="10%"> SUBJECT </th>
@@ -62,44 +120,30 @@ INCOMING 2021 | <a href="letters_without_reference_2021/index.php">LETTERS WITHO
 </thead>
 <tbody>
 	<?php
-		include('connect.php');	
-		// variable to store number of rows per page
-		$limit = 20;
-		// update the active page number
-        if (isset($_GET["page"])) {    
-            $page_number  = $_GET["page"];}
-        else {    
-          $page_number=1;    }       
-        // get the initial page number
-        $initial_page = ($page_number-1) * $limit;       
-        // get data of selected rows per page 
-
-
-
-		$result = $db->prepare("SELECT * FROM incoming2021 ORDER BY id DESC LIMIT $initial_page, $limit");
-		$result->execute();
-		for($i=0; $row = $result->fetch(); $i++){ 
+		// Loop through the result set and display data
+		while ($row = $result->fetch()) {
+			// Display each row's data here...
 	?>
-	<tr class="incoming2021">
-		<td><?php echo $row['DATE_RECEIEVED']; ?></td>
-		<td><?php echo $row['REF']; ?></td>
-		<td><?php echo $row['SENDER']; ?></td>
-		<td><?php echo $row['SUBJECT']; ?></td>
-		<td><?php echo $row['TODEPT']; ?></td>
-		<td><?php echo $row['RECEIVED_BY']; ?></td>
-		<td><?php echo $row['DATE_OF_OUTGOING_LETTER']; ?></td>
-		<td><?php echo $row['REF_NO']; ?></td>
-		<td><?php echo $row['SENDING_DEPT']; ?></td>
-		<td><?php echo $row['DATE_RECIEVED_AT_REGISTRY']; ?></td>
-		<td><?php echo $row['RECIEVED_BY']; ?></td>
-		<td><?php echo $row['TEL']; ?></td>
-		<td><?php echo $row['DATE_RECIEVED']; ?></td>
-		<td><?php echo $row['FILE_NAME']; ?></td>
-		<td><?php echo $row['FILE_NO']; ?></td>
-		<td><?php echo $row['BOX_NO']; ?></td>
-		<td><a rel="facebox" href="editform.php?id=<?php echo $row['id']; ?>"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen" viewBox="0 0 16 16">  <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z"/></svg> </a> - -  
-		<a href="#" id="<?php echo $row['id']; ?>" class="delbutton" title="Click To Delete"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">  <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z"/></svg></a></td>
-	</tr>
+		<tr class="incoming2021">
+			<td><?php echo $row['DATE_RECEIEVED']; ?></td>
+			<td><?php echo $row['REF']; ?></td>
+			<td><?php echo $row['SENDER']; ?></td>
+			<td><?php echo $row['SUBJECT']; ?></td>
+			<td><?php echo $row['TODEPT']; ?></td>
+			<td><?php echo $row['RECEIVED_BY']; ?></td>
+			<td><?php echo $row['DATE_OF_OUTGOING_LETTER']; ?></td>
+			<td><?php echo $row['REF_NO']; ?></td>
+			<td><?php echo $row['SENDING_DEPT']; ?></td>
+			<td><?php echo $row['DATE_RECIEVED_AT_REGISTRY']; ?></td>
+			<td><?php echo $row['RECIEVED_BY']; ?></td>
+			<td><?php echo $row['TEL']; ?></td>
+			<td><?php echo $row['DATE_RECIEVED']; ?></td>
+			<td><?php echo $row['FILE_NAME']; ?></td>
+			<td><?php echo $row['FILE_NO']; ?></td>
+			<td><?php echo $row['BOX_NO']; ?></td>
+			<td><a rel="facebox" href="editform.php?id=<?php echo $row['id']; ?>"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen" viewBox="0 0 16 16">  <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z"/></svg> </a> - -  
+			<a href="#" id="<?php echo $row['id']; ?>" class="delbutton" title="Click To Delete"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">  <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z"/></svg></a></td>
+		</tr>
 	<?php
 		}
 	?>

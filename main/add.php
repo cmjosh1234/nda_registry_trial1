@@ -1,6 +1,6 @@
 <p>ENTER NEW RECORD</p>
 <form action="reg.php" method="POST">
-RECEIVED<br>
+DATE RECEIVED<br>
 <input type="date" name="DATE_RECEIEVED" /><br><br>
 REF<br>
 <input type="text" name="REF" /><br><br>
@@ -23,7 +23,7 @@ RECEIVED BY<br>
 <select name="RECEIVED_BY" class="ed">
 	<?php
 	include('connect.php');		
-        $result = $db->prepare("SELECT * FROM staff");
+        $result = $db->prepare("SELECT DISTINCT STAFF_NAME FROM staff");
 		$result->execute();
 		for($i=0; $row = $result->fetch(); $i++){
         echo '<option value="'.$row['STAFF_NAME'].'">'.$row['STAFF_NAME'].'</option>';
@@ -47,8 +47,8 @@ SENDING DEPT<br>
 	?>
 </select><br /><br>
 
-RECEIVED AT REGISTRY<br>
-<input type="text" name="DATE_RECIEVED_AT_REGISTRY" /><br><br>
+DATE RECEIVED AT REGISTRY<br>
+<input type="date" name="DATE_RECIEVED_AT_REGISTRY" /><br><br>
 RECEIVED BY<br>
 <select name="RECIEVED_BY" class="ed">
 	<?php

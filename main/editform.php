@@ -6,15 +6,16 @@
 	$result->execute();
 	for($i=0; $rows = $result->fetch(); $i++){
 ?>
+
 <form action="edit.php" method="POST" class="my_form">
 <input type="hidden" name="memids" value="<?php echo $id; ?>" />
-RECEIVED<br>
+DATE RECEIVED<br>
 <input type="date" name="DATE_RECEIEVED" value="<?php echo $rows['DATE_RECEIEVED']; ?>" /><br><br>
 REF<br>
 <input type="text" name="REF" value="<?php echo $rows['REF']; ?>" /><br><br>
 SENDER<br>
 <input type="text" name="SENDER" value="<?php echo $rows['SENDER']; ?>" /><br><br>
-SUB<br>
+SUBJECT<br>
 <input type="text" name="SUBJECT" value="<?php echo $rows['SUBJECT']; ?>" /><br><br>
 TO (DEPT)<br>
 <input type="text" name="TODEPT" value="<?php echo $rows['TODEPT']; ?>" /><br><br>
