@@ -91,7 +91,7 @@ include('connect.php');
 ?>
 
 <div id="formdesign">
-    <form action="index.php" method="GET">
+	<form action="index.php" method="GET">
         <input type="text" name="filter" value="<?php echo isset($_GET['filter']) ? $_GET['filter'] : ''; ?>" id="filter" placeholder="Search Record..." autocomplete="off" />
         <button type="submit">Search</button>
     </form>
@@ -233,7 +233,7 @@ function go2Page()
 <?php 
 	include_once('includes/footer.php')
 ?>
-<script src="js/jquery.js"></script>
+<!--<script src="js/jquery.js"></script> -->
 <script type="text/javascript">
 $(function() {
 $(".delbutton").click(function(){
