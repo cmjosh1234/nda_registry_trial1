@@ -4,7 +4,7 @@ $errmsg_arr = array();
 $errflag = false;
 // configuration
 $dbhost 	= "localhost";
-$dbname		= "record";
+$dbname		= "nda_registry_trial1";
 $dbuser		= "root";
 $dbpass		= "";
 
