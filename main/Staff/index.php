@@ -1,6 +1,6 @@
 <script src="../argiepolicarpio.js" type="text/javascript" charset="utf-8"></script>
 <script src="../js/application.js" type="text/javascript" charset="utf-8"></script>
-<link href="style.css" rel="stylesheet" type="text/css" />
+<link href="../style1.css" rel="stylesheet" type="text/css" />
 <style>
 .paging{
 	margin-top: 10px;
