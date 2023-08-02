@@ -94,7 +94,8 @@ INCOMING 2021 | <a href="letters_without_reference_2021/index.php">LETTERS WITHO
         <input type="text" name="filter" value="<?php echo isset($_GET['filter']) ? $_GET['filter'] : ''; ?>" id="filter" placeholder="Search Record..." autocomplete="off" />
         <button type="submit">Search</button>
     </form>
-    <a rel="facebox" href="add.php" id="add">ADD RECORD</a>
+<!--    <a rel="facebox" href="add.php" id="add">ADD RECORD</a>-->
+    <a rel="facebox" href="add.php" id="add"><img width="65" height="65" src="https://img.icons8.com/3d-fluency/94/add-file.png" alt="add-file"/></a>
 </div>
 
 <!-- <div class="topnav"> 

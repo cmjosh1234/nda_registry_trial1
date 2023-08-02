@@ -63,21 +63,49 @@ table tbody tr td{
 	float: left;
 	overflow: auto;
 }
-#add {
+/*#add {
 	float: right;
-	width: 8.5%;
+	width: 2em;
 	display: block;
     font-size: 12px;
-    height: 14px;
+    height: 10px;
     padding: 9px 28px 9px 28px;
 	border: 1px solid #DADADA; 
+	margin-top: -38px;
 }
 a#add {
 	text-decoration: none;
 	color: #666666;
 	font-family: arial;
-	font-size: 12px;
+	font-size: 10px;
 	background-color: whitesmoke;
+}
+#add {
+    float: right;
+    width: 2em;
+    display: block;
+    font-size: 12px;
+    height: 10px;
+    padding: 9px 28px;
+    border: 1px solid #DADADA; 
+    margin-top: -38px;
+    text-align: center; 
+	line-height: 10px; 
+}
+
+a#add {
+    text-decoration: none;
+    color: #666666;
+    font-family: Arial, sans-serif; 
+    font-size: 10px;
+    background-color: whitesmoke;
+}*/
+a#add {
+    float: right;
+    width: 2em;
+    height: 10px;
+    padding: 9px 28px;
+    margin-top: -65px;
 }
 img{
 	display: flex;

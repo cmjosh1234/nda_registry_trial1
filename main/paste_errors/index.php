@@ -77,7 +77,7 @@ include('../connect.php');
 	<form action="index.php" method="GET">
         <input type="text" name="filter" value="<?php echo isset($_GET['filter']) ? $_GET['filter'] : ''; ?>" id="filter" placeholder="Search Record..." autocomplete="off" />
         <button type="submit">Search</button>
-    </form><a rel="facebox" href="add_pe.php" id="add">ADD RECORD</a>
+    </form><a rel="facebox" href="add_pe.php" id="add"><img width="65" height="65" src="https://img.icons8.com/3d-fluency/94/add-file.png" alt="add-file"/></a>
 </div>
 <div class="scrollingTable">
 <table cellspacing="0" cellpadding="2" id="resultTable">

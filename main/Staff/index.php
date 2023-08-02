@@ -80,7 +80,7 @@ include('../connect.php');
         <input type="text" name="filter" value="<?php echo isset($_GET['filter']) ? $_GET['filter'] : ''; ?>" id="filter" placeholder="Search Record..." autocomplete="off" />
         <button type="submit">Search</button>
 </form>
-<a rel="facebox" href="add.php" id="add">ADD RECORD</a>
+<a rel="facebox" href="add.php" id="add"><img width="65" height="65" src="https://img.icons8.com/external-flat-vol-2-vectorslab/68/external-Add-Profile-social-media-marketing-flat-vol-2-vectorslab.png" alt="external-Add-Profile-social-media-marketing-flat-vol-2-vectorslab"/></a>
 </div>
 <div class="scrollingTable">
 <table cellspacing="0" cellpadding="2" id="resultTable">
