@@ -98,17 +98,6 @@ INCOMING 2021 | <a href="letters_without_reference_2021/index.php">LETTERS WITHO
     <a rel="facebox" href="add.php" id="add"><img width="65" height="65" src="https://img.icons8.com/3d-fluency/94/add-file.png" alt="add-file"/></a>
 </div>
 
-<!-- <div class="topnav"> 
-INCOMING 2021 | <a href="letters_without_reference_2021/index.php">LETTERS WITHOUT REFERENCE 2021</a> | <a href="paste_errors/index.php">PASTE ERRORS</a>| <a href="staff/index.php">STAFF</a>
-<div class="search-container">
-	<form action="index.php" method="GET">
-        <input type="text" name="filter" value="<?php echo isset($_GET['filter']) ? $_GET['filter'] : ''; ?>" id="filter" placeholder="Search Record..." autocomplete="off" />
-        <button type="submit">Search</button>
-    </form>
-    <a rel="facebox" href="add.php" id="add">ADD RECORD</a>
-</div>
-</div>  -->
-
 <table cellspacing="0" cellpadding="2" id="resultTable">
 <thead>
 	<tr>
@@ -124,7 +113,7 @@ INCOMING 2021 | <a href="letters_without_reference_2021/index.php">LETTERS WITHO
 		<th width="10%"> DATE RECEIVED AT REGISTRY </th>
 		<th width="10%"> RECEIVED BY </th>
 		<th width="10%"> TELEPHONE NUMBER </th>
-		<th width="10%"> RECEIVED </th>
+		<th width="10%"> RECEIVED DATE</th>
 		<th width="10%"> FILE NAME </th>
 		<th width="10%"> FILE NUMBER </th>
 		<th width="10%"> BOX NUMBER </th>
@@ -191,32 +180,6 @@ INCOMING 2021 | <a href="letters_without_reference_2021/index.php">LETTERS WITHO
             echo "<a href='index.php?page=".($page_number+1)."'>  Next </a>";   
         }
 
-
-
-
-		/*
-        $result = $db->prepare("SELECT COUNT(*) FROM incoming2021");     
-        $result->execute();    
-		$row = $result->fetch();    
-        $total_rows = $row[0];              
-    echo "</br>";            
-        // get the required number of pages
-        $total_pages = ceil($total_rows / $limit);     
-        $pageURL = "";     
-        if($page_number>=2){   
-            echo "<a href='index.php?page=".($page_number-1)."'>  Prev </a>";   }                          
-        for ($i=1; $i<=$total_pages; $i++) {   
-		"<div class=pageNo>";
-          if ($i == $page_number) {   
-              $pageURL .= "<a class = 'active' href='index.php?page=" .$i."'>".$i. " </a>"; 
-			} else {
-              $pageURL .= "<a href='index.php?page=".$i."'>  ".$i." </a>"; }
-		"</div>";
-		};     
-        echo $pageURL;    
-        if($page_number<$total_pages){   
-            echo "<a href='index.php?page=".($page_number+1)."'>  Next </a>";   
-        }  	*/
 ?>
 </div>
 

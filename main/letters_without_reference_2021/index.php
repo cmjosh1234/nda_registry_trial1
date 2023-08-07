@@ -93,16 +93,6 @@ include('../connect.php');
 <table cellspacing="0" cellpadding="2" id="resultTable">
 <thead>
 	<tr>
-	<!--<th width="5%"> LETTER_REF</th>
-		<th width="7%"> ADDRESSED TO</th>
-		<th width="500%"> SUBJECT</th>
-		<th width="15%"> DATE OF LETTER</th>
-		<th width="23%"> DATE RECIEVED AT REGISTRY</th>
-		<th width="10%"> RECIPIENT</th>
-		<th width="5%"> DATE DELIVERED</th>
-		<th width="10%"> FILE NAME </th>
-		<th width="10%"> FILE NUMBER </th>
-		<th width="10%"> BOX NUMBER</th> -->
 		<th> LETTER_REF</th>
 		<th> ADDRESSED TO</th>
 		<th width="23%"> SUBJECT</th>

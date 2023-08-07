@@ -1,5 +1,5 @@
 <style type="text/css">
-	p {
+p {
   /* Center horizontally*/
   text-align: center;
 }

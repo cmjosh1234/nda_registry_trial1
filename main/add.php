@@ -50,21 +50,22 @@ SENDING DEPT<br>
 DATE RECEIVED AT REGISTRY<br>
 <input type="date" name="DATE_RECIEVED_AT_REGISTRY" /><br><br>
 RECEIVED BY<br>
-<select name="RECIEVED_BY" class="ed">
+<!-- <select name="RECIEVED_BY" class="ed">
 	<?php
-	include('connect.php');		
+	/*include('connect.php');		
         $result = $db->prepare("SELECT * FROM staff");
 		$result->execute();
 		for($i=0; $row = $result->fetch(); $i++){
         echo '<option value="'.$row['STAFF_NAME'].'">'.$row['STAFF_NAME'].'</option>';
-		}//Closes drop down box
+		}//Closes drop down box*/
 	?>
-</select><br /><br>
+</select><br /><br> -->
+<input type="text" name="RECIEVED_BY" /><br><br>
 
 TEL<br>
 <input type="text" name="TEL" /><br><br>
-RECEIVED<br>
-<input type="text" name="DATE_RECIEVED" /><br><br>
+RECEIVED DATE<br>
+<input type="date" name="DATE_RECIEVED" /><br><br>
 FILE NAME<br>
 <input type="text" name="FILE_NAME" /><br><br>
 FILE NUMBER<br>
