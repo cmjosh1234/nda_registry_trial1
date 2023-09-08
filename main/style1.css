@@ -1,6 +1,12 @@
 body {
-	background: #10D14A;
+	/*background: #10D14A;*/
+	background-color: #f1f1f1;
 }
+/*Button designs*/
+
+
+
+
 table { 
 	border-collapse: separate; 
 	background-color: #FFFFFF; 
@@ -32,20 +38,10 @@ table tbody tr td{
 	font-family: arial;
 }
 #log a {
-	color: #FFFFFF;
+	/*color: #FFFFFF;
 	text-decoration: none;
-	font-family: arial;
+	font-family: arial;*/
 }
-#formdesign {
-	background: linear-gradient(to bottom, #FFFFFF 0%, #F6F6F6 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
-    border: 1px solid #D5D5D5;
-    padding: 12px;
-    position: relative;
-	margin: 20px auto;
-	width: 83%;
-	clear: both;
-	height: 34px;	
-}  
 
 #filter {
     background: url("img/big_search.png") no-repeat scroll 10px 10px #FFFFFF;
@@ -64,13 +60,16 @@ table tbody tr td{
 	overflow: auto;
 }
 a#add {
-    float: right;
+   /* float: right;
     width: 2em;
     height: 10px;
     padding: 9px 28px;
-    margin-top: -65px;
+    margin-top: -65px; */
 }
 img{
 	display: flex;
 	justify-content: left;
+}
+.addButton{
+	float: left;
 }

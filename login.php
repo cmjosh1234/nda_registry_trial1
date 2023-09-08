@@ -32,7 +32,7 @@ $result->bindParam(':ent2', $password);
 $result->execute();
 $rows = $result->fetch(PDO::FETCH_NUM);
 if($rows > 0) {
-header("location: main/index.php");
+header("location: main/dash.php");
 }
 else{
 	$errmsg_arr[] = 'Username and Password are not found';

@@ -1,3 +1,6 @@
+<?php 
+	include_once('../includes/navbarlwr.php')
+?>
 <script src="argiepolicarpio.js" type="text/javascript" charset="utf-8"></script>
 <script src="../js/searchFunction.js" type="text/javascript" charset="utf-8"></script>
 <link href="../style1.css" rel="stylesheet" type="text/css" />
@@ -30,9 +33,6 @@
       })
     })
   </script>
-<div id="log">
-<a href="../index.php"> INCOMING 2021 </a> | LETTERS WITHOUT REFERENCE 2021 | <a href="../paste_errors/index.php">PASTE ERRORS</a> | <a href="../Staff/index.php">STAFF</a>
-</div>
 <?php
 // Function to handle the search filter and perform the search
 function performSearch($db, $search_filter, $initial_page, $limit)
@@ -81,14 +81,10 @@ include('../connect.php');
 		}
 ?>
 
-
-<div id="formdesign">
-<form action="index.php" method="GET">
-        <input type="text" name="filter" value="<?php echo isset($_GET['filter']) ? $_GET['filter'] : ''; ?>" id="filter" placeholder="Search Record..." autocomplete="off" />
-        <button type="submit">Search</button>
-</form>
-<a rel="facebox" href="add_le.php" id="add"><img width="65" height="65" src="https://img.icons8.com/3d-fluency/94/add-file.png" alt="add-file"/></a>
+<div class="addButton">
+    <a rel="facebox" href="add_le.php" id="add"><!--<img width="65" height="65" src="https://img.icons8.com/3d-fluency/94/add-file.png" alt="add-file"/>--><button class="button"><span>Add Record </span></button></a>
 </div>
+
 <div class="scrollingTable">
 <table cellspacing="0" cellpadding="2" id="resultTable">
 <thead>

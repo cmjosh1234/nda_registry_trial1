@@ -1,4 +1,7 @@
 <?php /* DISPLAYS INCOMING 2021 PAGE*/ ?>
+<?php 
+	include_once('navbarincoming.php')
+?>
 <script src="argiepolicarpio.js" type="text/javascript" charset="utf-8"></script>
 <script src="js/searchFunction.js" type="text/javascript" charset="utf-8"></script>
 <link href="style1.css" rel="stylesheet" type="text/css" />
@@ -19,6 +22,9 @@
 	color: #fff;
 }
 .paging a:hover:not(.active) {background-color: #ddd;}
+/*Button edits*/
+.button { float: right; padding-right: 10px ; background-color: #128BC9; border: none; color: white; padding: 16px 32px; text-align: center; font-size: 16px; margin: 4px 2px; opacity: 1; transition: 0.3s;}
+.button:hover {opacity: 0.6}
 </style>
 <link href="src/facebox.css" media="screen" rel="stylesheet" type="text/css" />
    <script src="lib/jquery.js" type="text/javascript"></script>
@@ -86,18 +92,10 @@ include('connect.php');
 			$result->execute();
 		}
 ?>
-<div id="log"> 
-INCOMING 2021 | <a href="letters_without_reference_2021/index.php">LETTERS WITHOUT REFERENCE 2021</a> | <a href="paste_errors/index.php">PASTE ERRORS</a>| <a href="staff/index.php">STAFF</a>
-</div>
-<div id="formdesign">
-	<form action="index.php" method="GET">
-        <input type="text" name="filter" value="<?php echo isset($_GET['filter']) ? $_GET['filter'] : ''; ?>" id="filter" placeholder="Search Record..." autocomplete="off" />
-        <button type="submit">Search</button>
-    </form>
-<!--    <a rel="facebox" href="add.php" id="add">ADD RECORD</a>-->
-    <a rel="facebox" href="add.php" id="add"><img width="65" height="65" src="https://img.icons8.com/3d-fluency/94/add-file.png" alt="add-file"/></a>
-</div>
 
+<div class="addButton">
+    <a rel="facebox" href="add.php" id="add"><!--<img width="65" height="65" src="https://img.icons8.com/3d-fluency/94/add-file.png" alt="add-file"/>--><button class="button"><span>Add Record </span></button></a>
+</div>
 <table cellspacing="0" cellpadding="2" id="resultTable">
 <thead>
 	<tr>

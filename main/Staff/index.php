@@ -1,3 +1,7 @@
+<?php 
+	include_once('../includes/navbarstaff.php')
+?>
+
 <script src="../argiepolicarpio.js" type="text/javascript" charset="utf-8"></script>
 <script src="../js/application.js" type="text/javascript" charset="utf-8"></script>
 <link href="../style1.css" rel="stylesheet" type="text/css" />
@@ -30,9 +34,6 @@
       })
     })
   </script>
-<div id="log">
-<a href="../index.php"> INCOMING 2021 </a> | <a href="../letters_without_reference_2021/index.php">LETTERS WITHOUT REFERENCE 2021</a> | <a href="../paste_errors/index.php"> PASTE ERRORS </a> |  STAFF
-</div>
 
 <?php
 // Function to handle the search filter and perform the search
@@ -76,10 +77,6 @@ include('../connect.php');
 ?>
 
 <div id="formdesign">
-<form action="index.php" method="GET">
-        <input type="text" name="filter" value="<?php echo isset($_GET['filter']) ? $_GET['filter'] : ''; ?>" id="filter" placeholder="Search Record..." autocomplete="off" />
-        <button type="submit">Search</button>
-</form>
 <a rel="facebox" href="add.php" id="add"><img width="65" height="65" src="https://img.icons8.com/external-flat-vol-2-vectorslab/68/external-Add-Profile-social-media-marketing-flat-vol-2-vectorslab.png" alt="external-Add-Profile-social-media-marketing-flat-vol-2-vectorslab"/></a>
 </div>
 <div class="scrollingTable">
